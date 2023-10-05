@@ -30,6 +30,7 @@ public class HomeController  {
 		List<Employee> employees = new ArrayList<Employee>(); //===> đẩy dữ liệu xuống view
 		employees.add(new Employee(1, "Nguyen Van A"));
 		employees.add(new Employee(1, "Nguyen Van B"));
+		employees.add(new Employee(1, "Nguyen Van C"));
 		
 		// đẩy dữ liệu xuống tầng View
 		model.addAttribute("employees", employees);
