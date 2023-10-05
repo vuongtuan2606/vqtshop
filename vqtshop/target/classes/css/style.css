@@ -843,14 +843,7 @@ input[type="email"]{
     color: #333333;
     font-weight: 500;
 }
-.accordion__products__title{
-    
-    
 
-}
-.accordion__products__list{
-
-}
 
 .accordion__products__list ul{
     max-height: 290px;
@@ -935,10 +928,12 @@ accordion__products__list__color {
 
 
 /* ACCOUNT-LOGIN */
+
 .account-login__box{
     margin-bottom: 40px;
     margin-top: 40px;
 }
+.contact__box-shadow,
 .account-login__box-shadow{
     background: #fff;
     overflow: hidden;
@@ -984,6 +979,7 @@ accordion__products__list__color {
     line-height: 22px;
     color: #999;
 }
+#customer_contact,
 #customer_register,
 #customer_login{
     padding: 20px;

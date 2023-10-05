@@ -4,7 +4,7 @@
             <div class="container">
                 <div class="row align-items-center ">
                     <div class="col-xl-2 col-lg-2 col-md-3 right-header"> 
-                        <a href="../Index/home.html"><img src="../img/logo.webp" alt="" ></a>           
+                        <a href="${base}/home"><img src="../img/logo.webp" alt="" ></a>           
                     </div>
                     <div class="col-xl-8 col-lg-8 col-md-6 center-header">
                         <ul>
@@ -52,7 +52,7 @@
                             <li><a href="">Mũ nón</a></li>
                             <li><a href="">Áo quần</a></li>
                             <li><a href="">Phụ kiện</a></li>
-                            <li><a href="../Index/contact.html">Liên hệ</a></li>
+                            <li><a href="${base}/contact">Liên hệ</a></li>
                             <li><a href="">Sale-off</a></li>
                         </ul>
                     </div>

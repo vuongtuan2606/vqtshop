@@ -11,20 +11,21 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import com.devpro.vqtshop.controller.BaseController;
 import com.devpro.vqtshop.dto.Employee;
 
 //1. Báo cho spring mvc biết đây là Controller
 //2. Tạo instance của controller này <=> HomeController hc = new HomeController()
 //hc sẽ được lưu vào trong spring-container(kiểu dữ liệu List, Map)
 @Controller
-public class HomeController  {
+public class HomeController extends BaseController  {
 
 	
 	
 	@RequestMapping(value = { "/home" }, method = RequestMethod.GET)
 	public String home(final Model model, 
-	   				   final HttpServletRequest request, 
-	   				   final HttpServletResponse response) {
+						   				 final HttpServletRequest request, 
+						   				 final HttpServletResponse response) {
 		
 	
 		List<Employee> employees = new ArrayList<Employee>(); //===> đẩy dữ liệu xuống view
@@ -33,6 +34,7 @@ public class HomeController  {
 		employees.add(new Employee(1, "Nguyen Van c"));
 		employees.add(new Employee(1, "Nguyen Van d"));
 		employees.add(new Employee(1, "Nguyen Van e"));
+		employees.add(new Employee(1, "Nguyen Van d"));
 		
 		
 		// đẩy dữ liệu xuống tầng View
