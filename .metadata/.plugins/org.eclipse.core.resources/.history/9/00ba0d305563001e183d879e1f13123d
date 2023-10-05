@@ -1,0 +1,42 @@
+package com.devpro.vqtshop.controller.customer;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+
+import com.devpro.vqtshop.dto.Employee;
+
+//1. Báo cho spring mvc biết đây là Controller
+//2. Tạo instance của controller này <=> HomeController hc = new HomeController()
+//hc sẽ được lưu vào trong spring-container(kiểu dữ liệu List, Map)
+@Controller
+public class HomeController  {
+
+	
+	
+	@RequestMapping(value = { "/home" }, method = RequestMethod.GET)
+	public String home(final Model model, 
+	   				   final HttpServletRequest request, 
+	   				   final HttpServletResponse response) {
+		
+	
+		List<Employee> employees = new ArrayList<Employee>(); //===> đẩy dữ liệu xuống view
+		employees.add(new Employee(1, "Nguyen Van A"));
+		employees.add(new Employee(1, "Nguyen Van B"));
+		
+		// đẩy dữ liệu xuống tầng View
+		model.addAttribute("employees", employees);
+		
+		// đường dẫn tới file view
+		return "customer/index"; // -> /WEB-INF/views/customer/index.jsp
+	
+
+	}
+}
