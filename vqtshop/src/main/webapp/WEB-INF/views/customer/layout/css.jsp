@@ -9,5 +9,6 @@
     
     <!-- css styles -->
     <link rel='stylesheet' type='text/css' media='screen' href='${base}/css/style.css'>
+    
       <!-- css styles -->
     <link rel='stylesheet' type='text/css' media='screen' href='${base}/css/grid.css'>
