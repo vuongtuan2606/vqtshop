@@ -1,46 +1,59 @@
 package com.devpro.vqtshop.model;
 
-public class Contact {
-	private String fullName;
-	private String email;
-	private String message;
-	private String describe;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Table;
+
+@Entity // sẽ được mapping với bảng contact các thuộc tính chung / tạo ra class BaseEntity: chứa tất cả các colum trong : vd :id, status, created
+@Table(name ="tbl_contact") // cần giống tên trong bảng của sql
+
+public class Contact extends BaseEntity {
+
+	//@Column để biết xem cột nào trong bảng sql
 	
-	public Contact() {
-		super();
-		// TODO Auto-generated constructor stub
-	}
+	//sf:input path="fullName" placeholder="Nhập Họ tên của bạn" type="text" class="form-control form-control-lg" value="" name="fullName" id="customer_FullName" required="" data-validation-error-msg="Không được để trống" data-validation="required"></sf:input>
+	@Column(name="fullname", length= 100, nullable = false)
+	private String fullname ; // property
 	
-	public Contact(String fullName, String email, String message, String describe) {
-		super();
-		this.fullName = fullName;
-		this.email = email;
-		this.message = message;
-		this.describe = describe;
+	@Column(name="email", length= 100, nullable = false)
+	private String email;// property
+	
+	@Column(name="request", length= 100, nullable = false)
+	private String request;// property
+	
+	@Column(name="description", length= 1000, nullable = false)
+	private String  description;// property
+
+	public String getFullname() {
+		return fullname;
 	}
 
-	public String getFullName() {
-		return fullName;
+	public void setFullname(String fullname) {
+		this.fullname = fullname;
 	}
-	public void setFullName(String fullName) {
-		this.fullName = fullName;
-	}
+
 	public String getEmail() {
 		return email;
 	}
+
 	public void setEmail(String email) {
 		this.email = email;
 	}
-	public String getMessage() {
-		return message;
+
+	public String getRequest() {
+		return request;
 	}
-	public void setMessage(String message) {
-		this.message = message;
+
+	public void setRequest(String request) {
+		this.request = request;
 	}
-	public String getDescribe() {
-		return describe;
+
+	public String getDescription() {
+		return description;
 	}
-	public void setDescribe(String describe) {
-		this.describe = describe;
+
+	public void setDescription(String description) {
+		this.description = description;
 	}
+
 }

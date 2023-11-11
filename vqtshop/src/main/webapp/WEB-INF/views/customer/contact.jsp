@@ -52,7 +52,7 @@
                                     <div class="form-contact clearfix">
                                         <fieldset class="form-group margin-bottom-10">
                                             <label>Họ Tên<span class="required">*</span></label>
-                                            <sf:input path="fullName" placeholder="Nhập Họ tên của bạn" type="text" class="form-control form-control-lg" value="" name="fullName" id="customer_FullName" required="" data-validation-error-msg="Không được để trống" data-validation="required"></sf:input>
+                                            <sf:input path="fullname" placeholder="Nhập Họ tên của bạn" type="text" class="form-control form-control-lg" value="" name="fullname" id="customer_FullName" required="" data-validation-error-msg="Không được để trống" data-validation="required"></sf:input>
                                         </fieldset>
                                         <fieldset class="form-group margin-bottom-10">
                                             <label for=""> EMAIL<span class="required">*</span></label>
@@ -60,11 +60,11 @@
                                         </fieldset>
                                         <fieldset class="form-group margin-bottom-10">
                                             <label for=""> Yêu cầu<span class="required">*</span></label>
-                                            <sf:input path="message" autocomplete="off" placeholder="Nhập yêu cầu của bạn" type="text" class="form-control form-control-lg" value="" name="message" id="customer_message" data-validation-error-msg="Không được để trống" data-validation="required" ></sf:input>
+                                            <sf:input path="request" autocomplete="off" placeholder="Nhập yêu cầu của bạn" type="text" class="form-control form-control-lg" value="" name="request" id="customer_message" data-validation-error-msg="Không được để trống" data-validation="required" ></sf:input>
                                         </fieldset>
                                         <fieldset class="form-group margin-bottom-10">
                                             <label for=""> Mô tả<span class="required">*</span></label>
-                                            <sf:textarea path="describe" autocomplete="off" placeholder="Nhập mô tả" class="form-control form-control-lg"  name="describe" id="customer_describe" data-validation-error-msg="Không được để trống" data-validation="required" ></sf:textarea>
+                                            <sf:textarea path="description" autocomplete="off" placeholder="Nhập mô tả" class="form-control form-control-lg"  name="description" id="customer_description" data-validation-error-msg="Không được để trống" data-validation="required" ></sf:textarea>
                                         </fieldset>        
                                          <fieldset class="form-group margin-bottom-10">
                                             <label>Update File<span class="required">*</span></label>
