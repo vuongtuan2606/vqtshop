@@ -14,10 +14,19 @@ import javax.persistence.Table;
 @Table(name = "tbl_size")
 public class ProductsSize extends BaseEntity {
 
-	@Column(name = "size_name", nullable = false)
+	@Column(name = "size_name",length = 100, nullable = false)
 	private String size_name;
+	
+	@Column(name = "quantity", nullable = true)
+	private Integer quantity;
 
 	
+	public Integer getQuantity() {
+		return quantity;
+	}
+	public void setQuantity(Integer quantity) {
+		this.quantity = quantity;
+	}
 	@ManyToMany(cascade = CascadeType.ALL, 
 		   	  fetch = FetchType.EAGER, 
 			  mappedBy = "_productsSize")
@@ -39,6 +48,8 @@ public class ProductsSize extends BaseEntity {
 	}
 	public void setSize_name(String size_name) {
 		this.size_name = size_name;
+		
+		
 	}
 	public Set<Product> get_product() {
 		return _product;

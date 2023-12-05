@@ -35,7 +35,7 @@ public class MVCConf implements WebMvcConfigurer {
 		registry.addResourceHandler("/img/**").addResourceLocations("classpath:/img/");
 		
 		// đăng kí thêm folder upload
-        //registry.addResourceHandler("/upload/**").addResourceLocations("file:" + "C:/upload/");		
+        registry.addResourceHandler("/upload/**").addResourceLocations("file:" + "C:/upload/");		
 	}
 
 	// @Bean báo spring biết cần tạo instance

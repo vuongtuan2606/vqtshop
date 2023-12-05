@@ -34,6 +34,7 @@ public class User extends BaseEntity  {
 	@Column(name = "shipping_address", length = 1000, nullable = true)
 	private String shippingAddress;
 	
+	
 	@ManyToMany(cascade = CascadeType.ALL, 
 							  fetch = FetchType.EAGER)
 	@JoinTable(name = "tbl_user_roles", 

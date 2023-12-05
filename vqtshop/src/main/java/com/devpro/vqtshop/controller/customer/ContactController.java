@@ -41,6 +41,7 @@ public class ContactController extends BaseController {
 		// trong view có sử dụng spring-form để binding-data
 		// data dùng để binding có tên là Contact
 		Contact data = new Contact();
+		
 		model.addAttribute("contact", data);
 		
 		// đường dẫn tới flie view

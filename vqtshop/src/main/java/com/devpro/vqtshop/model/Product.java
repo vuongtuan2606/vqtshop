@@ -40,7 +40,7 @@ public class Product extends BaseEntity {
 	@Column(name = "detail_description", nullable = false, columnDefinition = "LONGTEXT")
 	private String details;
 	
-	@Column(name = "avatar",length = 200, nullable = true)
+	@Column(name = "avatar",  length = 200 ,nullable = true)
 	private String avatar;
 
 	@Column(name = "seo", length = 1000, nullable = true)
