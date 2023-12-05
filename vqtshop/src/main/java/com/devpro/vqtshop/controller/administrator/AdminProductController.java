@@ -1,5 +1,6 @@
 package com.devpro.vqtshop.controller.administrator;
 
+import java.awt.Color;
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.List;
@@ -21,10 +22,15 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.devpro.vqtshop.controller.BaseController;
+import com.devpro.vqtshop.model.Brand;
+
 import com.devpro.vqtshop.model.Categories;
+import com.devpro.vqtshop.model.ColorProduct;
 import com.devpro.vqtshop.model.Product;
 import com.devpro.vqtshop.model.ProductsSize;
+import com.devpro.vqtshop.services.BrandService;
 import com.devpro.vqtshop.services.CategoriesService;
+import com.devpro.vqtshop.services.ColorService;
 import com.devpro.vqtshop.services.PagerData;
 import com.devpro.vqtshop.services.ProductService;
 import com.devpro.vqtshop.services.ProductsSizeService;
@@ -40,6 +46,12 @@ public class AdminProductController extends BaseController {
 
 //	@Autowired
 //	private CategoriesService categoriesService;
+	
+	@Autowired 
+	private BrandService brandService;
+	
+	@Autowired 
+	private ColorService colorService;
 	
 	@Autowired 
 	private ProductService productService;
@@ -66,15 +78,25 @@ public class AdminProductController extends BaseController {
 		// đẩy data xuống view
 		model.addAttribute("product", newProduct);
 		
-//		// đẩy danh sách categories xuống tầng view
-//		List<Categories> NewCategories =categoriesService.getEntitiesByNativeSQL("SELECT * FROM vqtshopdb.tbl_category");
-//		
-//		model.addAttribute("categories", NewCategories); 
 		
+		// đẩy danh sách ProductsSize xuống tầng view
+		List<Brand> NewBrand =brandService.getEntitiesByNativeSQL("SELECT * FROM vqtshopdb.tbl_brand");
+		
+		model.addAttribute("brand", NewBrand); 
+		// trả về view
+		
+
 		// đẩy danh sách ProductsSize xuống tầng view
 		List<ProductsSize> NewProductsSize =productsSizeService.getEntitiesByNativeSQL("SELECT * FROM vqtshopdb.tbl_size");
 		
 		model.addAttribute("productsSize", NewProductsSize); 
+		// trả về view
+		
+
+		// đẩy danh sách ProductsSize xuống tầng view
+		List<ColorProduct> NewColor=colorService.getEntitiesByNativeSQL("SELECT * FROM vqtshopdb.tbl_color");
+		
+		model.addAttribute("colorProduct", NewColor); 
 		// trả về view
 		return "administrator/product_management";
 		

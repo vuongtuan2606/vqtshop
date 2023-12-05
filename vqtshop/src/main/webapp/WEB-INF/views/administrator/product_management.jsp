@@ -61,6 +61,20 @@
 											</sf:select>
                                         </div>
                                         
+                                        <div class="form-group col-xxl-6  col-xl-6">
+                                            <label class="control-label">Thương hiệu</label>
+                                           	<sf:select path="brand.id" class="form-control" id="brand">
+												<sf:options items="${brand}" itemValue="id" itemLabel="brand_name" />									
+											</sf:select>
+                                        </div>
+                                        
+                                        <div class="form-group col-xxl-6  col-xl-6">
+                                            <label class="control-label">Màu sắc</label>
+                                           	<sf:select path="colorProduct.id" class="form-control" id="color">
+												<sf:options items="${colorProduct}" itemValue="id" itemLabel="color_name" />									
+											</sf:select>
+                                        </div>
+                                        
                                         <div class="form-group col-xxl-12  col-xl-12">
                                             <label class="control-label">Tên sản phẩm</label>
                                             <sf:input path="title" autocomplete="off" type="text" class="form-control" id="title" placeholder="Title" required="required"></sf:input>                                         

@@ -55,8 +55,21 @@ public class Product extends BaseEntity {
 	@JoinColumn(name = "category_id")       // tên khóa ngoài 
 	private Categories categories;                 // property
 
+
+	@ManyToOne(fetch = FetchType.EAGER) 
+	@JoinColumn(name = "brand_id")       
+	private Brand brand;         
+	
+	@ManyToOne(fetch = FetchType.EAGER) 
+	@JoinColumn(name = "color_id")       
+	private ColorProduct colorProduct;      
 	
 	
+
+
+	
+
+
 	@ManyToMany(cascade = CascadeType.ALL, 
 			  fetch = FetchType.EAGER)
 	@JoinTable(name = "tbl_products_size", 
@@ -185,6 +198,26 @@ public class Product extends BaseEntity {
 		this.categories = categories;
 	}
 	
+	public Brand getBrand() {
+		return brand;
+	}
+
+
+	public void setBrand(Brand brand) {
+		this.brand = brand;
+	}
+
+	public ColorProduct getColorProduct() {
+		return colorProduct;
+	}
+
+
+	public void setColorProduct(ColorProduct colorProduct) {
+		this.colorProduct = colorProduct;
+	}
+
+
+
 	
 	public Set<ProductsSize> get_productsSize() {
 		return _productsSize;
