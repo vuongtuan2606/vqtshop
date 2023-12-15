@@ -48,10 +48,12 @@
                                     </div>
                                     <sf:form class="row" method="post" action="${base}/admin/product/management" modelAttribute="product" enctype="multipart/form-data">
                                        
-                                        <div class="form-group col-xxl-6  col-xl-6">
+                                        <%-- <div class="form-group col-xxl-6  col-xl-6">
                                             <label class="control-label">Mã sản phẩm</label>
                                             <sf:input path="id" id="productId" class="form-control" type="number"></sf:input>
-                                        </div>
+                                        </div> --%>
+                                        <sf:hidden path="id" id="productId"  class="form-control"></sf:hidden>
+                                        
                                          <!-- đang mapping cho foreign key: category_id(int) -->
                                          <!-- path chỉ hiểu và chỉ nên mapping với các kiểu (int, bool, double, string) -->                                                       
                                         <div class="form-group col-xxl-6  col-xl-6">
@@ -67,7 +69,7 @@
 												<sf:options items="${brand}" itemValue="id" itemLabel="brand_name" />									
 											</sf:select>
                                         </div>
-                                        
+                                       
                                         <div class="form-group col-xxl-6  col-xl-6">
                                             <label class="control-label">Màu sắc</label>
                                            	<sf:select path="colorProduct.id" class="form-control" id="color">
@@ -75,6 +77,8 @@
 											</sf:select>
                                         </div>
                                         
+                                      
+										                                        
                                         <div class="form-group col-xxl-12  col-xl-12">
                                             <label class="control-label">Tên sản phẩm</label>
                                             <sf:input path="title" autocomplete="off" type="text" class="form-control" id="title" placeholder="Title" required="required"></sf:input>                                         
@@ -124,30 +128,24 @@
 												<img alt="" style="width: 100px; height: 100px;" src="${base }/upload/${productImage.path}">
 											</c:forEach>
 										</div>
+										
+										
+										<div class="form-group col-xxl-12  col-xl-12">
+											<label class="control-label" for="selectedSize">Chọn size:</label>
+										    <c:forEach items="${sizes}" var="size">
+										        <div>
+										            <input type="checkbox" id="size${size.id}" name="selectedSizes" value="${size.id}">
+										            <label for="size${size.id}">${size.name_size}</label>
+										        </div>
+										    </c:forEach>
+										</div>
+									     
+									  
 										 <div class="form-group col-xxl-6  col-xl-6">
                                             <label class="control-label control-label-hot ">Is Hot Product?</label>
                                             <sf:checkbox path="isHot" class="form-check-input" id="isHot" />
                                         </div>
-                                     <!-- 
-                                        <div class="form-group col-xxl-6  col-xl-6">
-                                            <label class="control-label">--tình trạng--</label>
-                                            <select class="form-control" >
-                                                <option value="">--Chọn tình trạng</option>
-                                                <option>Giày mlb</option>
-                                                <option>Túi sách</option>
-                                                <option>Mũ mlb</option>
-                                            </select>
-                                        </div> -->
-                                        
-                                         <!--  <div class="form-group col-xxl-6  col-xl-6">
-                                            <label class="control-label">Nhà cung cấp--</label>
-                                            <select class="form-control" >
-                                                <option value="">--Chọn nhà cung cấp</option>
-                                                <option>Giày mlb</option>
-                                                <option>Túi sách</option>
-                                                <option>Mũ mlb</option>
-                                            </select>
-                                        </div> -->
+                                  
                                       
                                        <div class="">
                                             <button class="btn btn-save" type="submit">Lưu lại</button>

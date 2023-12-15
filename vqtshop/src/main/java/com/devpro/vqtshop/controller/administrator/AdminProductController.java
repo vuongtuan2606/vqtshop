@@ -22,18 +22,21 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.devpro.vqtshop.controller.BaseController;
+import com.devpro.vqtshop.dto.ProductSearchModel;
 import com.devpro.vqtshop.model.Brand;
 
 import com.devpro.vqtshop.model.Categories;
 import com.devpro.vqtshop.model.ColorProduct;
 import com.devpro.vqtshop.model.Product;
-import com.devpro.vqtshop.model.ProductsSize;
+
+import com.devpro.vqtshop.model.SizeQ;
 import com.devpro.vqtshop.services.BrandService;
 import com.devpro.vqtshop.services.CategoriesService;
 import com.devpro.vqtshop.services.ColorService;
 import com.devpro.vqtshop.services.PagerData;
 import com.devpro.vqtshop.services.ProductService;
-import com.devpro.vqtshop.services.ProductsSizeService;
+
+import com.devpro.vqtshop.services.SizeQSizeService;
 
 
 /**
@@ -57,7 +60,7 @@ public class AdminProductController extends BaseController {
 	private ProductService productService;
 	
 	@Autowired
-	private ProductsSizeService productsSizeService;
+	private SizeQSizeService sizeQSizeService;
 	/**
 	 * Admin vào thêm mới sản phẩm.
 	 * các request luôn có tiền tố /admin/...
@@ -78,26 +81,21 @@ public class AdminProductController extends BaseController {
 		// đẩy data xuống view
 		model.addAttribute("product", newProduct);
 		
-		
-		// đẩy danh sách ProductsSize xuống tầng view
-		List<Brand> NewBrand =brandService.getEntitiesByNativeSQL("SELECT * FROM vqtshopdb.tbl_brand");
-		
+
+		List<Brand> NewBrand =brandService.getEntitiesByNativeSQL("SELECT * FROM vqtshopdb.tbl_brand");	
 		model.addAttribute("brand", NewBrand); 
-		// trả về view
-		
 
-		// đẩy danh sách ProductsSize xuống tầng view
-		List<ProductsSize> NewProductsSize =productsSizeService.getEntitiesByNativeSQL("SELECT * FROM vqtshopdb.tbl_size");
 		
-		model.addAttribute("productsSize", NewProductsSize); 
-		// trả về view
-		
+		List<SizeQ> NewProductsSize =sizeQSizeService.getEntitiesByNativeSQL("SELECT * FROM vqtshopdb.tbl_size");
+		model.addAttribute("sizes", NewProductsSize); 
 
-		// đẩy danh sách ProductsSize xuống tầng view
+		
 		List<ColorProduct> NewColor=colorService.getEntitiesByNativeSQL("SELECT * FROM vqtshopdb.tbl_color");
-		
 		model.addAttribute("colorProduct", NewColor); 
-		// trả về view
+
+		
+		
+		
 		return "administrator/product_management";
 		
 	}
@@ -120,11 +118,7 @@ public class AdminProductController extends BaseController {
 		Product addedProduct = productService.getById(productId);
 		model.addAttribute("product", addedProduct);
 		
-		
-		// đẩy danh sách ProductsSize xuống tầng view
-		List<ProductsSize> NewProductsSize =productsSizeService.getEntitiesByNativeSQL("SELECT * FROM vqtshopdb.tbl_size");
-		
-		model.addAttribute("productsSize", NewProductsSize); 
+	
 		
 		return "administrator/product_management";
 		
@@ -149,23 +143,49 @@ public class AdminProductController extends BaseController {
 										  final HttpServletResponse response, 
 										  @ModelAttribute("product") Product product,  // hứng dư liệu modelAttribute="product"  bên form đẩy lên 
 										  @RequestParam("productAvatar") MultipartFile productAvatar,  // productAvatar  = (name="productAvatar" )
-										  @RequestParam("productPictures") MultipartFile[] productPictures
+										  @RequestParam("productPictures") MultipartFile[] productPictures,
+										  @RequestParam("selectedSize")List< Long> selectedSizeId
+										 
+										  
 	) throws Exception {
 	
 	    
 		// thêm mới
 		if (product.getId() == null || product.getId() <= 0) {
-			productService.add(product, productAvatar, productPictures);
+			productService.add(product, productAvatar, productPictures, selectedSizeId);
 		}
 		// chỉnh sửa
 		else
 		{ 
-			productService.update(product, productAvatar, productPictures);
+			productService.update(product, productAvatar, productPictures, selectedSizeId);
 		}
+		
 		
 		// trở về trang danh sách
 		return "redirect:/admin/product/list";
 		
+	}
+	
+	@RequestMapping(value = { "/admin/products/list" }, method = RequestMethod.GET)
+	public String adminProductList(final Model model, 
+													 final HttpServletRequest request,
+													 final HttpServletResponse response) throws IOException {
+		
+		  String keyword = request.getParameter("keyword"); 
+		  Integer categoryId = getInteger(request,"categoryId");
+		  
+		  ProductSearchModel searchModel = new ProductSearchModel();
+		  searchModel.setKeyword(keyword);
+		  searchModel.setCategoryId(categoryId);
+		  searchModel.setPage(getCurrentPage(request));
+		  
+		  PagerData<Product> products = productService.search(searchModel);
+
+	      model.addAttribute("products",  products);			
+	      model.addAttribute("searchModel", searchModel);
+			
+		  return "administrator/product_list";
+
 	}
 	
 	

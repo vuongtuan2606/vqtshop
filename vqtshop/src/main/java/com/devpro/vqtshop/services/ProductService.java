@@ -2,24 +2,34 @@ package com.devpro.vqtshop.services;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.List;
 
 import javax.transaction.Transactional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.util.StringUtils;
-import org.springframework.web.multipart.MultipartFile;
 
+import org.springframework.web.multipart.MultipartFile;
+import org.springframework.util.StringUtils;
+import com.devpro.vqtshop.dto.ProductSearchModel;
 //import com.devpro.vqtshop.dto.ProductSearchModel;
 import com.devpro.vqtshop.model.Product;
 import com.devpro.vqtshop.model.ProductImages;
-import com.github.slugify.Slugify;
+
+
+
+
+
 
 @Service
 public class ProductService extends BaseService<Product> {
 
 	@Autowired
 	private ProductImagesService productImagesService;
+	
+	
+	@Autowired 
+	private SizeQSizeService sizeQSizeService;
 	
 	@Override
 	protected Class<Product> clazz() {
@@ -68,7 +78,7 @@ public class ProductService extends BaseService<Product> {
 	
 	
 	@Transactional // khi thực hiện lưu trữ 2 bảng với nhau , nếu 1 cái được 1 cái lỗi thì @Transactional lưu cùng thành công , cùng thất bại -> cái thành công sẽ không đượcn lưu trong db
-	public Product add(Product p, MultipartFile productAvatar, MultipartFile[] productPictures) // tham số hứng được bên controller
+	public Product add(Product p, MultipartFile productAvatar, MultipartFile[] productPictures ,List< Long> selectedSizeId) // tham số hứng được bên controller
 			throws IllegalStateException, IOException {
 
 		// kiểm tra xem admin có đẩy avatar lên không ???
@@ -107,6 +117,8 @@ public class ProductService extends BaseService<Product> {
 				p.addProductImages(pi); 
 			}
 		}
+		
+
 
 		// tạo seo: bổ sung thêm thời gian tính bằng miliseconds để tránh trùng seo
 		//p.setSeo(new Slugify().slugify(p.getTitle() + "-" + System.currentTimeMillis()));
@@ -117,7 +129,7 @@ public class ProductService extends BaseService<Product> {
 	}
 	
 	@Transactional
-	public Product update(Product p, MultipartFile productAvatar, MultipartFile[] productPictures)
+	public Product update(Product p, MultipartFile productAvatar, MultipartFile[] productPictures, List< Long> selectedSizeId)
 			throws IllegalStateException, IOException {
 
 		// lấy thông tin cũ của product theo id
@@ -166,6 +178,8 @@ public class ProductService extends BaseService<Product> {
 				p.addProductImages(pi);
 			}
 		}
+		
+
 
 		//tạo seo
 		//p.setSeo(new Slugify().slugify(p.getTitle() + "-" + System.currentTimeMillis()));
@@ -174,40 +188,47 @@ public class ProductService extends BaseService<Product> {
 		return super.saveOrUpdate(p);
 	}
 	
-//	public PagerData<Product> search(ProductSearchModel searchModel) {
-//
-//		// khởi tạo câu lệnh
-//		String sql = "SELECT * FROM tbl_products p WHERE 1=1";
-//
-//		if (searchModel != null) {
-//			
-//			// tìm kiếm theo category
-//			if(searchModel.getCategoryId() != null && searchModel.getCategoryId() > 0) {
-//				sql += " and category_id = " + searchModel.getCategoryId();
-//			}
-//		
-//			// tìm theo seo
-////			if (!StringUtils.isEmpty(searchModel.seo)) {
-////				sql += " and p.seo = '" + searchModel.seo + "'";
-////			}
-//
-//			// tìm kiếm sản phẩm hot
+	
+	
+	public PagerData<Product> search(ProductSearchModel searchModel) {
+
+		// khởi tạo câu lệnh
+		// tránh if else nhiều thì luôn luôn có 1 câu lệnh giả và tiêu chí
+        //  người dùng seach theo tiêu chí nào thì cần thêm câu lệnh and
+		String sql = "SELECT * FROM tbl_products p WHERE 1=1";
+
+		if (searchModel != null) {
+				
+				// tìm kiếm theo category
+				if(searchModel.getCategoryId() != null && searchModel.getCategoryId() > 0) 
+				{
+					sql += " and category_id = " + searchModel.getCategoryId();
+				}
+				
+				// tìm kiếm theo title và description
+				if (!StringUtils.isEmpty(searchModel.getKeyword()))
+				{
+					sql += " and (p.title like '%" + searchModel.getKeyword() + "%'" ;
+							    // " or p.detail_description like '%" + searchModel.getKeyword() + "%'" + 
+							   //  " or p.short_description like '%" + searchModel.getKeyword() + "%')";
+				}
+		
+		// tìm theo seo
+//		if (!StringUtils.isEmpty(searchModel.seo)) {
+//			sql += " and p.seo = '" + searchModel.seo + "'";
+//		}
+
+			// tìm kiếm sản phẩm hot
 ////			if (searchModel.isHot != null) {
 ////				sql += " and p.is_hot = '" + searchModel.seo + "'";
 ////			}
 //			
-//			// tìm kiếm theo title và description
-//			if (!StringUtils.isEmpty(searchModel.getKeyword())) {
-//				sql += " and (p.title like '%" + searchModel.getKeyword() + "%'" + 
-//						     " or p.detail_description like '%" + searchModel.getKeyword() + "%'" + 
-//						     " or p.short_description like '%" + searchModel.getKeyword() + "%')";
-//			}
-//		}
+		
+		}
 //
 //		// chi lay san pham chua xoa
 ////				sql += " and p.status=1 ";
 //		
-//		return getEntitiesByNativeSQL(sql, searchModel.getPage());
-//		
-//	}
+			return getEntitiesByNativeSQL(sql,searchModel.getPage());
+	}
 }

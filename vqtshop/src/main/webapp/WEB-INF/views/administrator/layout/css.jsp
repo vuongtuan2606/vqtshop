@@ -10,11 +10,14 @@
     <!-- css styles -->
     <link rel='stylesheet' type='text/css' media='screen' href='${base}/css/administrator/stylebe.css'>
     
-     <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" />
     
     
-<!-- include summernote css -->
-<link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.css" rel="stylesheet">
-   
-      <!-- css styles -->
-<%--     <link rel='stylesheet' type='text/css' media='screen' href='${base}/css/grid.css'> --%>
+	<!-- include summernote css -->
+	<link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.css" rel="stylesheet">
+	   
+	   
+	<!-- Paging phân trang -->
+	<link href="${base}/css/simplePagination.css" rel="stylesheet" />   
+	      <!-- css styles -->
+	<%--     <link rel='stylesheet' type='text/css' media='screen' href='${base}/css/grid.css'> --%>

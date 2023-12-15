@@ -14,12 +14,10 @@
 ul{
     margin: 0;
     padding: 0;
-    padding-left: 0 !important ;
 }
 li{
     margin: 0;
     padding: 0;
-    
 }
 
 
@@ -84,11 +82,10 @@ body{
 /* menu */
 .menu_manager{
     background-color: #285a5d;
-    height: 100%!important;
   
 }
 .menu_manager ul li{
-    padding: 20px 15px;
+    padding: 20px 20px;
 }
 
 .menu_manager ul li:hover {
@@ -192,42 +189,35 @@ margin: 10px;
     border-radius: 10px;
 }
 
+
+.element_button__search button{
+    --bs-btn-bg:#355f61;
+     --bs-btn-border-color:none;
+     --bs-btn-hover-bg:#0e686b;
+}
+
 .element_button{
     padding: 15px 30px;
     display: flex;
+    justify-content: space-between;
 
 }
-.element_button li a{
+
+#element_button_1{
+    background-color: #66FF99;
+
+    margin-right: 20px;
+    padding: 6px;
+    border-radius: 10px;
+}
+#element_button_1 a {
     font-weight: 600;
     font-size: 15px;
     text-transform: uppercase;
     margin-bottom: 5px;
     color: #120414;
-} 
-
-.element_button li{
-    background-color: #c0cccd;
-    margin-right: 20px;
-    padding: 5px;
-    border-radius: 10px;
-}
-#element_button_1{
-    background-color: #66FF99;
 }
 
-#element_button_2{
-    background-color: #00CCCC;
-}
-
-#element_button_3{
-    background-color: #CCCCFF;
-}
-
-#element_button_4{
-    background-color: #FF3333
-
-    ;
-}
 
 /* form add product */
 

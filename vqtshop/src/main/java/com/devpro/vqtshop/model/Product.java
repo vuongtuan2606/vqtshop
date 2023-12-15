@@ -52,7 +52,8 @@ public class Product extends BaseEntity {
 	
 	//	bảng product có khóa ngoài là :category_id lên là bảng nhiều
 	@ManyToOne(fetch = FetchType.EAGER) // EAGER nếu lấy sản phẩm A thì lấy các cái liên quan
-	@JoinColumn(name = "category_id")       // tên khóa ngoài 
+	@JoinColumn(name = "category_id")       // tên khóa ngoài
+	// bên product_mana <sf:select path="categories.id"
 	private Categories categories;                 // property
 
 
@@ -64,31 +65,7 @@ public class Product extends BaseEntity {
 	@JoinColumn(name = "color_id")       
 	private ColorProduct colorProduct;      
 	
-	
 
-
-	
-
-
-	@ManyToMany(cascade = CascadeType.ALL, 
-			  fetch = FetchType.EAGER)
-	@JoinTable(name = "tbl_products_size", 
-	joinColumns = @JoinColumn(name = "products_id"), 
-	inverseJoinColumns = @JoinColumn(name = "size_id"))
-	private Set<ProductsSize> _productsSize = new HashSet<ProductsSize>();
-	
-	public void addProductsSize(ProductsSize size ) {
-		size.get_product().add(this);
-		_productsSize.add(size);
-	}
-
-
-	public void deleteProductsSize(ProductsSize size) {
-		size.get_product().remove(this);
-		_productsSize.remove(size);
-	}
-
-	
 	@OneToMany(cascade = CascadeType.ALL,  
 							fetch = FetchType.EAGER,  		
 							mappedBy = "product_images") 		
@@ -106,9 +83,35 @@ public class Product extends BaseEntity {
 	}
 	
 	
-
-
 	
+	
+	@ManyToMany(cascade = CascadeType.ALL, 
+							  fetch = FetchType.EAGER)
+	@JoinTable(name = "tbl_products_size", 
+	joinColumns = @JoinColumn(name = "products_id"), 
+	inverseJoinColumns = @JoinColumn(name = "size_id"))
+	private Set<SizeQ> sizeQ = new HashSet<SizeQ>();
+	
+
+
+	public void addSize(SizeQ s ) {
+		s.getProduct().add(this);
+		sizeQ.add(s);
+	}
+	public void deleteSize(SizeQ s) {
+		s.getProduct().remove(this);
+		sizeQ.remove(s);
+	}
+	
+
+	public Set<SizeQ> getSizeQ() {
+		return sizeQ;
+	}
+
+	public void setSizeQ(Set<SizeQ> sizeQ) {
+		this.sizeQ = sizeQ;
+	}
+
 	public String getTitle() {
 		return title;
 	}
@@ -216,17 +219,6 @@ public class Product extends BaseEntity {
 		this.colorProduct = colorProduct;
 	}
 
-
-
-	
-	public Set<ProductsSize> get_productsSize() {
-		return _productsSize;
-	}
-
-
-	public void set_productsSize(Set<ProductsSize> _productsSize) {
-		this._productsSize = _productsSize;
-	}
 
 
 	public Set<ProductImages> getProductImages() {

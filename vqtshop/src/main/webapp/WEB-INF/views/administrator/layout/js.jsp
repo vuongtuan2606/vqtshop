@@ -7,3 +7,6 @@
 
 <!-- include summernote js -->
 <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.js"></script>
+
+<!-- Paging -->
+<script src='${base}/js/administrator/jquery.simplePagination.js'></script>

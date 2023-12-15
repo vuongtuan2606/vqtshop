@@ -1,5 +1,8 @@
 package com.devpro.vqtshop.controller;
 import java.util.List;
+
+import javax.servlet.http.HttpServletRequest;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.ModelAttribute;
 
@@ -20,5 +23,22 @@ public abstract class BaseController {
 	public List<Categories> getAllCategories() {
 		return categoriesService.findAll();// trả về danh sách 
 	}
+	// chuyền vào kiểu abc lỗi
+		public Integer getInteger(HttpServletRequest request, String paramName) {
+			try {
+				return Integer.parseInt(request.getParameter(paramName));
+			} catch (Exception e) {
+				return null;
+			}
+		}
+		
+		
+		public int getCurrentPage(HttpServletRequest request) {
+			try {
+				return Integer.parseInt(request.getParameter("page"));
+			} catch (Exception e) {
+				return 1;
+			}
+		}
 	
 }
