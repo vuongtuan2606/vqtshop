@@ -1,11 +1,16 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 
+<!-- import JSTL -->
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+
 <!DOCTYPE html>
 <html>
 <head>
     <meta charset='utf-8'>
     <meta http-equiv='X-UA-Compatible' content='IE=edge'>
-    <title>Page Title</title>
+    <title>Trang chủ</title>
     <meta name='viewport' content='width=device-width, initial-scale=1'>
     <jsp:include page="/WEB-INF/views/common/variables.jsp"></jsp:include>
     <jsp:include page="/WEB-INF/views/customer/layout/css.jsp"></jsp:include>
@@ -120,162 +125,34 @@
                 </div>
                 <div class="new-shoes__product">
                     <div class="row d-flex">
-                        <div class="col-xl-3 col-md-4 col-12 pb-3">
-                            <div class="product__card" >    
-                                <div class="product__image">
-                                    <img src="../img/new-product-1.webp" class="main-image" >
-                                    <img src="../img/new-product-1-hover.webp" alt="" class="hover-image">
-                                    <div class="overlay__add-to-cart">
-                                        <button class="add-to-cart">
-                                            <i class="bi bi-cart-plus"></i>
-                                        </button>
-                                    </div>
-                                </div>
-                                <div class="product__info">
-                                    <span class="product__brand">MLB VIỆT NAM</span>
-                                    <a href="">Giày MLB Chunky Liner Mid Denim Boston Red</a>
-                                    <span class="product__price">
-                                        4.790.000đ
-                                    </span>
-                                </div>
-                            </div>
-                        </div><div class="col-xl-3 col-md-4 col-12 pb-3">
-                            <div class="product__card" >    
-                                <div class="product__image">
-                                    <img src="../img/new-product-1.webp" class="main-image" >
-                                    <img src="../img/new-product-1-hover.webp" alt="" class="hover-image">
-                                    <div class="overlay__add-to-cart">
-                                        <button class="add-to-cart">
-                                            <i class="bi bi-cart-plus"></i>
-                                        </button>
-                                    </div>
-                                </div>
-                                <div class="product__info">
-                                    <span class="product__brand">MLB VIỆT NAM</span>
-                                    <a href="">Giày MLB Chunky Liner Mid Denim Boston Red</a>
-                                    <span class="product__price">
-                                        4.790.000đ
-                                    </span>
-                                </div>
-                            </div>
-                        </div><div class="col-xl-3 col-md-4 col-12 pb-3">
-                            <div class="product__card" >    
-                                <div class="product__image">
-                                    <img src="../img/new-product-1.webp" class="main-image" >
-                                    <img src="../img/new-product-1-hover.webp" alt="" class="hover-image">
-                                    <div class="overlay__add-to-cart">
-                                        <button class="add-to-cart">
-                                            <i class="bi bi-cart-plus"></i>
-                                        </button>
-                                    </div>
-                                </div>
-                                <div class="product__info">
-                                    <span class="product__brand">MLB VIỆT NAM</span>
-                                    <a href="">Giày MLB Chunky Liner Mid Denim Boston Red</a>
-                                    <span class="product__price">
-                                        4.790.000đ
-                                    </span>
-                                </div>
-                            </div>
-                        </div><div class="col-xl-3 col-md-4 col-12 pb-3">
-                            <div class="product__card" >    
-                                <div class="product__image">
-                                    <img src="../img/new-product-1.webp" class="main-image" >
-                                    <img src="../img/new-product-1-hover.webp" alt="" class="hover-image">
-                                    <div class="overlay__add-to-cart">
-                                        <button class="add-to-cart">
-                                            <i class="bi bi-cart-plus"></i>
-                                        </button>
-                                    </div>
-                                </div>
-                                <div class="product__info">
-                                    <span class="product__brand">MLB VIỆT NAM</span>
-                                    <a href="">Giày MLB Chunky Liner Mid Denim Boston Red</a>
-                                    <span class="product__price">
-                                        4.790.000đ
-                                    </span>
-                                </div>
-                            </div>
-                        </div><div class="col-xl-3 col-md-4 col-12 pb-3">
-                            <div class="product__card" >    
-                                <div class="product__image">
-                                    <img src="../img/new-product-1.webp" class="main-image" >
-                                    <img src="../img/new-product-1-hover.webp" alt="" class="hover-image">
-                                    <div class="overlay__add-to-cart">
-                                        <button class="add-to-cart">
-                                            <i class="bi bi-cart-plus"></i>
-                                        </button>
-                                    </div>
-                                </div>
-                                <div class="product__info">
-                                    <span class="product__brand">MLB VIỆT NAM</span>
-                                    <a href="">Giày MLB Chunky Liner Mid Denim Boston Red</a>
-                                    <span class="product__price">
-                                        4.790.000đ
-                                    </span>
-                                </div>
-                            </div>
-                        </div><div class="col-xl-3 col-md-4 col-12 pb-3">
-                            <div class="product__card" >    
-                                <div class="product__image">
-                                    <img src="../img/new-product-1.webp" class="main-image" >
-                                    <img src="../img/new-product-1-hover.webp" alt="" class="hover-image">
-                                    <div class="overlay__add-to-cart">
-                                        <button class="add-to-cart">
-                                            <i class="bi bi-cart-plus"></i>
-                                        </button>
-                                    </div>
-                                </div>
-                                <div class="product__info">
-                                    <span class="product__brand">MLB VIỆT NAM</span>
-                                    <a href="">Giày MLB Chunky Liner Mid Denim Boston Red</a>
-                                    <span class="product__price">
-                                        4.790.000đ
-                                    </span>
-                                </div>
-                            </div>
-                        </div><div class="col-xl-3 col-md-4 col-12 pb-3">
-                            <div class="product__card" >    
-                                <div class="product__image">
-                                    <img src="../img/new-product-1.webp" class="main-image" >
-                                    <img src="../img/new-product-1-hover.webp" alt="" class="hover-image">
-                                    <div class="overlay__add-to-cart">
-                                        <button class="add-to-cart">
-                                            <i class="bi bi-cart-plus"></i>
-                                        </button>
-                                    </div>
-                                </div>
-                                <div class="product__info">
-                                    <span class="product__brand">MLB VIỆT NAM</span>
-                                    <a href="">Giày MLB Chunky Liner Mid Denim Boston Red</a>
-                                    <span class="product__price">
-                                        4.790.000đ
-                                    </span>
-                                </div>
-                            </div>
-                        </div><div class="col-xl-3 col-md-4 col-12 pb-3">
-                            <div class="product__card" >    
-                                <div class="product__image">
-                                    <img src="../img/new-product-1.webp" class="main-image" >
-                                    <img src="../img/new-product-1-hover.webp" alt="" class="hover-image">
-                                    <div class="overlay__add-to-cart">
-                                        <button class="add-to-cart">
-                                            <i class="bi bi-cart-plus"></i>
-                                        </button>
-                                    </div>
-                                </div>
-                                <div class="product__info">
-                                    <span class="product__brand">MLB VIỆT NAM</span>
-                                    <a href="">Giày MLB Chunky Liner Mid Denim Boston Red</a>
-                                    <span class="product__price">
-                                        4.790.000đ
-                                    </span>
-                                </div>
-                            </div>
-                        </div>
-                        
-                        
-                    </div>
+                       <c:forEach var="products"  begin = "0" end = "4" items="${productsHot}">  
+	                        <div class="col-xl-3 col-xlx-3 col-md-4 col-12 pb-3">                     	    
+	                           <div class="product__card" >    
+	                               <div class="product__image">
+	                                   <img src="${base }/upload/${products.avatar}" />
+	                                   <!-- <img src="../img/new-product-1-hover.webp" alt="" class="hover-image"> -->
+	                                   <div class="overlay__add-to-cart">
+	                                       <button class="add-to-cart">
+	                                       		<a href="" onclick="AddToCart('${base}', ${products.id }, 1)">
+		                                       		<i class="bi bi-cart-plus"></i>
+		                                  		 </a>                                           
+	                                       </button>
+	                                   </div>
+	                               </div>
+	                               <div class="product__info">
+	                                   <span class="product__brand" >${products.brand.brand_name}</span>
+	                                   <a href="">${products.title }</a>
+	                                   <fmt:setLocale value="vi_VN"/>
+	                                   <div class="product__price" >
+	                                   		 <span  style="text-decoration: line-through !important;">
+	                                   		 	<fmt:formatNumber value="${products.price}" type="currency"/></span>
+   											 <span>
+   											 <fmt:formatNumber value="${products.priceSale}" type="currency"/></span>
+	                                   </div>	                                    
+	                               </div>
+	                           </div>                          
+	                    </div>
+                    </c:forEach> 
                 </div>
                 <div class="view-more">
                     <a href="">

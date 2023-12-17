@@ -115,8 +115,21 @@
 														<img src="${base }/upload/${p.avatar}" width="100" height="100">
 													</td>
                                                     <td>
-                                                        <li><a href="${base }/admin/product/management/${p.id}">Sửa</a></li>
-                                                        <li><a href="">Xóa</a></li>
+                                                        <li><a class="btn btn-primary" href="${base }/admin/product/management/${p.id}">Sửa</a></li>
+                                                        <li><a class="btn btn-danger" onclick="ShowModal(${count})" role="button" >Delete</a></li>
+                                                        
+                                                        <div id="myModal${count }" class="modal">																
+														  <!-- Modal content -->
+														  <div class="set-modal">
+														    <div class="modal-body">
+														      <p>Bạn có muốn xóa sản phẩm: ${p.title } ?</p>
+														    </div>
+														    <div class="modal-button">
+														      <button type="button" class="btn btn-secondary" onclick="CloseModal(${count})" id="cancel">Cancel</button>
+														      <button type="button" class="btn btn-primary" onclick="DeleteProduct(${p.id});">Accept!</button>
+														    </div>
+														  </div>									
+														</div>
                                                     </td>
                                                 </tr>
                                                 <c:set var="count" value="${count + 1}" scope="page"/>
@@ -141,7 +154,43 @@
     </section>
     <jsp:include page="/WEB-INF/views/administrator/layout/js.jsp"></jsp:include>
     <script type="text/javascript">
+	    function ShowModal(i) {
+			var modal = document.getElementById("myModal"+i);
+			modal.style.display = "block";
+		}
+			
+		function CloseModal(i) {
+		var modal = document.getElementById("myModal"+i);
+		modal.style.display = "none";
+		}
+		 function DeleteProduct(productId) // yêu cầu 1 cái id
+		 {
+				// tạo javascript object.  
+				var data = {
+					id: productId,
+				};
+				
+				// $ === jQuery
+				// json == javascript object
+				jQuery.ajax({
+					url:  '${base}' + "/admin/product/delete", //->request mapping định nghĩa bên controller
+					type: "post",						       //-> method type của Request Mapping	
+					contentType: "application/json",          //-> nội dung gửi lên dạng json <=> javascript object
+					data: JSON.stringify(data),              //-> chuyển 1 javascript object thành string json
+	
+					dataType: "json",                         // kiểu dữ liệu trả về từ Controller
+					success: function(jsonResult) {           // gọi ajax thành công
+						location.reload();                    //refresh lại trang web
+					},
+					error: function(jqXhr, textStatus, errorMessage) { // gọi ajax thất bại
+						alert("error");
+					}
+				});
+			}
+    
+    
 	    $( document ).ready(function() {
+	    	
 			
 			// đặt giá trị của category ứng với điều kiện search trước đó
 			$("#categoryId").val(${searchModel.categoryId});

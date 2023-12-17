@@ -118,7 +118,17 @@ public class AdminProductController extends BaseController {
 		Product addedProduct = productService.getById(productId);
 		model.addAttribute("product", addedProduct);
 		
-	
+
+		List<Brand> NewBrand =brandService.getEntitiesByNativeSQL("SELECT * FROM vqtshopdb.tbl_brand");	
+		model.addAttribute("brand", NewBrand); 
+
+		
+		List<SizeQ> NewProductsSize =sizeQSizeService.getEntitiesByNativeSQL("SELECT * FROM vqtshopdb.tbl_size");
+		model.addAttribute("sizes", NewProductsSize); 
+
+		
+		List<ColorProduct> NewColor=colorService.getEntitiesByNativeSQL("SELECT * FROM vqtshopdb.tbl_color");
+		model.addAttribute("colorProduct", NewColor); 
 		
 		return "administrator/product_management";
 		
@@ -143,8 +153,8 @@ public class AdminProductController extends BaseController {
 										  final HttpServletResponse response, 
 										  @ModelAttribute("product") Product product,  // hứng dư liệu modelAttribute="product"  bên form đẩy lên 
 										  @RequestParam("productAvatar") MultipartFile productAvatar,  // productAvatar  = (name="productAvatar" )
-										  @RequestParam("productPictures") MultipartFile[] productPictures,
-										  @RequestParam("selectedSize")List< Long> selectedSizeId
+										  @RequestParam("productPictures") MultipartFile[] productPictures
+										//  @RequestParam("selectedSize")List< Long> selectedSizeId
 										 
 										  
 	) throws Exception {
@@ -152,17 +162,17 @@ public class AdminProductController extends BaseController {
 	    
 		// thêm mới
 		if (product.getId() == null || product.getId() <= 0) {
-			productService.add(product, productAvatar, productPictures, selectedSizeId);
+			productService.add(product, productAvatar, productPictures );
 		}
 		// chỉnh sửa
 		else
 		{ 
-			productService.update(product, productAvatar, productPictures, selectedSizeId);
+			productService.update(product, productAvatar, productPictures);
 		}
 		
 		
 		// trở về trang danh sách
-		return "redirect:/admin/product/list";
+		return "redirect:/admin/products/list";
 		
 	}
 	
@@ -186,6 +196,23 @@ public class AdminProductController extends BaseController {
 			
 		  return "administrator/product_list";
 
+	}
+	
+	@RequestMapping(value = { "/admin/product/delete" }, method = RequestMethod.POST)
+	public ResponseEntity<Map<String, Object>> deleteProduct(final Model model, 
+															final HttpServletRequest request,
+															final HttpServletResponse response, 
+															final @RequestBody Product product) {
+		
+		Product productInDb = productService.getById(product.getId());
+		productInDb.setStatus(false);
+		productService.saveOrUpdate(productInDb);
+		
+		Map<String, Object> jsonResult = new HashMap<String, Object>();
+		jsonResult.put("code", 200);
+		jsonResult.put("message", "Đã xóa thành công");
+		return ResponseEntity.ok(jsonResult);
+		
 	}
 	
 	

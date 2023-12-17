@@ -9,15 +9,17 @@
     border: none;
     text-decoration: none !important;
     list-style: none;
-    
+
 }
 ul{
     margin: 0;
     padding: 0;
+    padding-left: 0 !important ;
 }
 li{
     margin: 0;
     padding: 0;
+
 }
 
 
@@ -30,20 +32,24 @@ body{
     height: 45px;
     background: #120414;
     }
-    
+
 .logout_in{
     position: absolute;
     top: 5px;
     right: 10px;
 }
-    
+
 .logout .logout_in a i{
     color: #ffffff;
     font-size: 30px;
     line-height: 30px;  
 }
-    
 
+.set-modal{    margin: auto;
+    width: 400px;
+    background-color: aliceblue;
+    border-radius: 10px;
+    padding: 25px 10px;}
 
 
 /* .section-1 */
@@ -82,10 +88,11 @@ body{
 /* menu */
 .menu_manager{
     background-color: #285a5d;
-  
+    height: 100%!important;
+
 }
 .menu_manager ul li{
-    padding: 20px 20px;
+    padding: 20px 15px;
 }
 
 .menu_manager ul li:hover {
@@ -96,7 +103,7 @@ body{
     font-size: 15px;
     line-height: 30px;  
     display: block;
-    
+
 }
 .menu_manager ul li a i{
     font-size: 20px;
@@ -217,7 +224,6 @@ margin: 10px;
     margin-bottom: 5px;
     color: #120414;
 }
-
 
 /* form add product */
 

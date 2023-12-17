@@ -8,7 +8,7 @@
     <link rel='stylesheet' type='text/css' media='screen' href='../fontawesome-free-6.1.1-web/css/all.css'>
     
     <!-- css styles -->
-    <link rel='stylesheet' type='text/css' media='screen' href='${base}/css/administrator/stylebe.css'>
+    <link rel='stylesheet' type='text/css' media='screen' href='${base}/css/administrator/style_admin.css'>
     
     <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" />
     

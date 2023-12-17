@@ -19,7 +19,7 @@ import com.devpro.vqtshop.model.BaseEntity;
 @Service 
 public abstract class BaseService<E extends BaseEntity> {
 
-	private static int SIZE_OF_PAGE = 1; // bản ghi trên 1 page 
+	private static int SIZE_OF_PAGE = 3; // bản ghi trên 1 page 
 	public static int NO_PAGING = 1;
 	
 	//Inject EntityManager

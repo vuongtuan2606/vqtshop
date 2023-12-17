@@ -33,3 +33,14 @@ document.addEventListener("DOMContentLoaded", function () {
         });
     });
 });
+
+function ShowModal(i) {
+			var modal = document.getElementById("myModal"+i);
+			modal.style.display = "block";
+		}
+		
+function CloseModal(i) {
+	var modal = document.getElementById("myModal"+i);
+	modal.style.display = "none";
+}
+

@@ -70,20 +70,20 @@
 											</sf:select>
                                         </div>
                                        
+                                      
+                                        
+                                      
+										                                        
                                         <div class="form-group col-xxl-6  col-xl-6">
+                                            <label class="control-label">Tên sản phẩm</label>
+                                            <sf:input path="title" autocomplete="off" type="text" class="form-control" id="title" placeholder="Title" required="required"></sf:input>                                         
+                                        </div>
+                                      	  <div class="form-group col-xxl-6  col-xl-6">
                                             <label class="control-label">Màu sắc</label>
                                            	<sf:select path="colorProduct.id" class="form-control" id="color">
 												<sf:options items="${colorProduct}" itemValue="id" itemLabel="color_name" />									
 											</sf:select>
                                         </div>
-                                        
-                                      
-										                                        
-                                        <div class="form-group col-xxl-12  col-xl-12">
-                                            <label class="control-label">Tên sản phẩm</label>
-                                            <sf:input path="title" autocomplete="off" type="text" class="form-control" id="title" placeholder="Title" required="required"></sf:input>                                         
-                                        </div>
-                                      
                                         <div class="form-group col-xxl-6  col-xl-6">
                                             <label class="control-label">giá gốc</label>
                                             <sf:input type="number" autocomplete="off" path="price" class="form-control" id="price" placeholder="Price" required="required"></sf:input>
@@ -130,7 +130,7 @@
 										</div>
 										
 										
-										<div class="form-group col-xxl-12  col-xl-12">
+										<%-- <div class="form-group col-xxl-12  col-xl-12">
 											<label class="control-label" for="selectedSize">Chọn size:</label>
 										    <c:forEach items="${sizes}" var="size">
 										        <div>
@@ -138,11 +138,11 @@
 										            <label for="size${size.id}">${size.name_size}</label>
 										        </div>
 										    </c:forEach>
-										</div>
+										</div> --%>
 									     
 									  
 										 <div class="form-group col-xxl-6  col-xl-6">
-                                            <label class="control-label control-label-hot ">Is Hot Product?</label>
+                                            <label class="control-label control-label-hot ">Sản phẩm này đang hot</label>
                                             <sf:checkbox path="isHot" class="form-check-input" id="isHot" />
                                         </div>
                                   

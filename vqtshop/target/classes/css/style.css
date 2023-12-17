@@ -7,7 +7,7 @@
     box-sizing: border-box;
     outline: none;
     border: none;
-    text-decoration: none !important;
+    text-decoration: none ;
     list-style: none;
     
 }
@@ -188,12 +188,7 @@ li{
    
 }
 
-.set__dropdown-menu{
 
-}
-.set__dropdown-item{
-
-}
 
 /* section 1 */
 .section-1{
@@ -227,9 +222,7 @@ li{
     font-size: 30px;
     color: #ffffff;
 }
-.section-service__info{
-    
-}
+
 .section-service__info h3{
     font-size: 14px;
     font-weight: 700;
@@ -250,9 +243,7 @@ li{
 .section-3{
     margin-bottom: 70px;
 }
-.section-new-shoes{
 
-}
 
 .new-shoes__title{
     text-align: center;
@@ -307,9 +298,7 @@ li{
 }
 
 /*  */
- .new-shoes__product{
 
-}
 .product__card{
     box-sizing: border-box;
     position: relative;
@@ -386,6 +375,7 @@ li{
     padding: 15px 10px;
     text-align: center;
     color: #212529;
+    height: 80px;
     display: inline;
 }
 .product__info p{
@@ -400,6 +390,8 @@ li{
     font-weight: 700;
     
 }
+
+
 
 .view-more{
     width: 245px;
@@ -603,9 +595,7 @@ li{
 .section-arrival{
     padding: 40px 0px;
 }
-.arrival__title{
 
-}
 
 /* footer */
 
@@ -1233,9 +1223,7 @@ accordion__products__list__color {
 .cart-page__product__remote button{
     background-color: white;
 }
-.cart-page__product__remote button i{
 
-}
 
 .cart-page__footer{
     margin-top: 20px;

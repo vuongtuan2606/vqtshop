@@ -80,7 +80,10 @@
                             </div>                          
                             </li>
                             <li class="cart">
-                                <a href=""><i class="bi bi-bag-check"></i></a>
+	                             <span class="cart_Item " id="iconShowTotalItemsInCart">
+	                           	 	<i class="bi bi-bag-check"></i>
+	                        	</span>
+                                
                             </li>
                         </ul>
                     </div>

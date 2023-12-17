@@ -11,7 +11,7 @@ import javax.persistence.FetchType;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
-
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 
@@ -49,6 +49,20 @@ public class User extends BaseEntity  {
 	public void deleteRole(Role role) {
 		role.getUsers().remove(this);
 		roles.remove(role);
+	}
+	
+
+	@OneToMany(cascade = CascadeType.ALL, 
+			   fetch = FetchType.EAGER, 
+			   mappedBy = "user")
+	private Set<SaleOrder> saleOrders = new HashSet<SaleOrder>();
+	public void addSaleOrder(SaleOrder saleOrder) {
+		saleOrders.add(saleOrder);
+		saleOrder.setUser(this);
+	}
+	public void deleteSaleOrder(SaleOrder saleOrder) {
+		saleOrders.remove(saleOrder);
+		saleOrder.setUser(null);
 	}
 	public String getFullname() {
 		return fullname;

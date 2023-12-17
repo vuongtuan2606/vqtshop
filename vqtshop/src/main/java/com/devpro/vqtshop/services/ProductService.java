@@ -78,7 +78,7 @@ public class ProductService extends BaseService<Product> {
 	
 	
 	@Transactional // khi thực hiện lưu trữ 2 bảng với nhau , nếu 1 cái được 1 cái lỗi thì @Transactional lưu cùng thành công , cùng thất bại -> cái thành công sẽ không đượcn lưu trong db
-	public Product add(Product p, MultipartFile productAvatar, MultipartFile[] productPictures ,List< Long> selectedSizeId) // tham số hứng được bên controller
+	public Product add(Product p, MultipartFile productAvatar, MultipartFile[] productPictures ) // tham số hứng được bên controller
 			throws IllegalStateException, IOException {
 
 		// kiểm tra xem admin có đẩy avatar lên không ???
@@ -129,7 +129,7 @@ public class ProductService extends BaseService<Product> {
 	}
 	
 	@Transactional
-	public Product update(Product p, MultipartFile productAvatar, MultipartFile[] productPictures, List< Long> selectedSizeId)
+	public Product update(Product p, MultipartFile productAvatar, MultipartFile[] productPictures )
 			throws IllegalStateException, IOException {
 
 		// lấy thông tin cũ của product theo id
@@ -208,9 +208,9 @@ public class ProductService extends BaseService<Product> {
 				// tìm kiếm theo title và description
 				if (!StringUtils.isEmpty(searchModel.getKeyword()))
 				{
-					sql += " and (p.title like '%" + searchModel.getKeyword() + "%'" ;
-							    // " or p.detail_description like '%" + searchModel.getKeyword() + "%'" + 
-							   //  " or p.short_description like '%" + searchModel.getKeyword() + "%')";
+					sql += " and (p.title like '%" + searchModel.getKeyword() + "%'" +
+							    " or p.detail_description like '%" + searchModel.getKeyword() + "%'" + 
+							     " or p.short_description like '%" + searchModel.getKeyword() + "%')";
 				}
 		
 		// tìm theo seo
