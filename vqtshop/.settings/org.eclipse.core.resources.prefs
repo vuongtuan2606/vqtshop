@@ -7,6 +7,7 @@ encoding//src/main/webapp/WEB-INF/views/administrator/layout/admin_header.jsp=UT
 encoding//src/main/webapp/WEB-INF/views/administrator/layout/admin_menu.jsp=UTF-8
 encoding//src/main/webapp/WEB-INF/views/administrator/product_list.jsp=UTF-8
 encoding//src/main/webapp/WEB-INF/views/administrator/product_management.jsp=UTF-8
+encoding//src/main/webapp/WEB-INF/views/customer/cart_success.jsp=UTF-8
 encoding//src/test/java=UTF-8
 encoding//src/test/resources=UTF-8
 encoding/<project>=UTF-8

@@ -10,13 +10,7 @@ import javax.persistence.Table;
 @Entity
 @Table(name = "tbl_saleorder_products")
 public class SaleOrderProducts extends BaseEntity {
-	
-	/*
-	 * @ManyToOne(fetch = FetchType.EAGER)
-	 * 
-	 * @JoinColumn(name = "product_id") private Product product;
-	 */
-	
+
 	@Column(name = "quantity")
 	private Integer quantity;
 	
@@ -24,6 +18,19 @@ public class SaleOrderProducts extends BaseEntity {
 	@JoinColumn(name = "saleorder_id")
 	private SaleOrder saleOrder;
 	
+	
+	@ManyToOne(fetch = FetchType.EAGER)
+	@JoinColumn(name = "product_id")
+	private Product product;
+	
+	public Product getProduct() {
+		return product;
+	}
+
+	public void setProduct(Product product) {
+		this.product = product;
+	}
+
 	public SaleOrder getSaleOrder() {
 		return saleOrder;
 	}
@@ -32,11 +39,7 @@ public class SaleOrderProducts extends BaseEntity {
 		this.saleOrder = saleOrder;
 	}
 
-	/*
-	 * public Product getProduct() { return product; }
-	 * 
-	 * public void setProduct(Product product) { this.product = product; }
-	 */
+
 
 	public Integer getQuantity() {
 		return quantity;

@@ -80,10 +80,12 @@
                             </div>                          
                             </li>
                             <li class="cart">
-	                             <span class="cart_Item " id="iconShowTotalItemsInCart">
-	                           	 	<i class="bi bi-bag-check"></i>
-	                        	</span>
-                                
+                            	<a href="${base}/cart">
+	                            	<i class="bi bi-bag-check"></i>
+		                             <span class="cart_Item " id="iconShowTotalItemsInCart">
+		                           	 	 ${totalItems }
+		                        	</span>
+                            	</a>
                             </li>
                         </ul>
                     </div>

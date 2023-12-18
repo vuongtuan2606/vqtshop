@@ -133,7 +133,7 @@
 	                                   <!-- <img src="../img/new-product-1-hover.webp" alt="" class="hover-image"> -->
 	                                   <div class="overlay__add-to-cart">
 	                                       <button class="add-to-cart">
-	                                       		<a href="" onclick="AddToCart('${base}', ${products.id }, 1)">
+	                                       		<a href="#" onclick="AddToCart('${base}', ${products.id }, 1)">
 		                                       		<i class="bi bi-cart-plus"></i>
 		                                  		 </a>                                           
 	                                       </button>

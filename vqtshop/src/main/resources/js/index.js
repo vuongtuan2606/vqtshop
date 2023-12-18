@@ -17,7 +17,7 @@ function AddToCart(baseUrl, productId, quanlity) {
 
 		dataType: "json", // kieu du lieu tra ve tu controller la json
 		success: function(jsonResult) {
-			alert(jsonResult.totalItems)
+			//alert(jsonResult.totalItems)
 			
 			// tăng số lượng sản phẩm trong giỏ hàng trong icon			
 			$("#iconShowTotalItemsInCart").html(jsonResult.totalItems); 
@@ -32,6 +32,45 @@ function AddToCart(baseUrl, productId, quanlity) {
 	});
 }
 
+
+
+// Cập nhật số lượng sản phẩm trong giỏ hàng khi click vào button '+' hoặc '-'
+//quanlity  = -1 là click vào button -
+//quanlity  = +1 là click vào button +
+function UpdateQuanlityCart(baseUrl, productId, quanlity) {
+	
+	let data = {
+		productId: productId, // lay theo id	
+		quanlity: quanlity
+	};
+	
+	// $ === jQuery
+	// json == javascript object
+	jQuery.ajax({
+		url: baseUrl + "/ajax/updateQuanlityCart", 
+		type: "post",
+		contentType: "application/json",
+		data: JSON.stringify(data),
+
+		dataType: "json", 
+		success: function(jsonResult) {
+			// tăng số lượng sản phẩm trong giỏ hàng trong icon
+			$( "#quanlity_" + productId ).html(jsonResult.currentProductQuality);
+			$( ".totalPrice" ).html(jsonResult.totalPrice);  // tổng tất cả sản phẩm
+			$( "#totalPriceItem_" + productId).html(jsonResult.total); // tổng số từng sản phẩm
+		},
+		error: function(jqXhr, textStatus, errorMessage) {
+			
+		}
+	});
+}
+
+
+
+function formatPrice(total){
+    return total.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1,");
+
+}
 
 
 

@@ -21,6 +21,16 @@ public class SaleOrder extends BaseEntity {
 
 	@Column(name = "total", precision = 13, scale = 2, nullable = false)
 	private BigDecimal total;
+	
+	@Column(name = "order_status")
+	private int orderStatus;
+
+	public int getOrderStatus() {
+		return orderStatus;
+	}
+	public void setOrderStatus(int orderStatus) {
+		this.orderStatus = orderStatus;
+	}
 
 	@Column(name = "customer_name")
 	private String customerName;
@@ -40,7 +50,9 @@ public class SaleOrder extends BaseEntity {
 	@OneToMany(cascade = CascadeType.ALL, 
 			   mappedBy = "saleOrder", 
 			   fetch = FetchType.EAGER)
+	
 	private Set<SaleOrderProducts> saleOrderProducts = new HashSet<SaleOrderProducts>();
+	
 	public void addSaleOrderProducts(SaleOrderProducts _saleOrderProducts) {
 		_saleOrderProducts.setSaleOrder(this);
 		saleOrderProducts.add(_saleOrderProducts);
@@ -50,10 +62,12 @@ public class SaleOrder extends BaseEntity {
 		saleOrderProducts.remove(_saleOrderProducts);
 	}
 
-	@ManyToOne(fetch = FetchType.EAGER)
+	@ManyToOne(fetch = FetchType.EAGER,
+						   cascade = { CascadeType.MERGE})
 	@JoinColumn(name = "user_id")
 	private User user;
 
+	
 	public String getCode() {
 		return code;
 	}
@@ -70,6 +84,7 @@ public class SaleOrder extends BaseEntity {
 		this.total = total;
 	}
 
+	
 	public String getCustomerName() {
 		return customerName;
 	}
@@ -84,22 +99,6 @@ public class SaleOrder extends BaseEntity {
 
 	public void setCustomerAddress(String customerAddress) {
 		this.customerAddress = customerAddress;
-	}
-
-	public String getSeo() {
-		return seo;
-	}
-
-	public void setSeo(String seo) {
-		this.seo = seo;
-	}
-
-	public Set<SaleOrderProducts> getSaleOrderProducts() {
-		return saleOrderProducts;
-	}
-
-	public void setSaleOrderProducts(Set<SaleOrderProducts> saleOrderProducts) {
-		this.saleOrderProducts = saleOrderProducts;
 	}
 
 	public String getCustomerPhone() {
@@ -117,7 +116,23 @@ public class SaleOrder extends BaseEntity {
 	public void setCustomerEmail(String customerEmail) {
 		this.customerEmail = customerEmail;
 	}
+	
+	public String getSeo() {
+		return seo;
+	}
 
+	public void setSeo(String seo) {
+		this.seo = seo;
+	}
+	
+	public Set<SaleOrderProducts> getSaleOrderProducts() {
+		return saleOrderProducts;
+	}
+
+	public void setSaleOrderProducts(Set<SaleOrderProducts> saleOrderProducts) {
+		this.saleOrderProducts = saleOrderProducts;
+	}
+	
 	public User getUser() {
 		return user;
 	}
@@ -125,5 +140,6 @@ public class SaleOrder extends BaseEntity {
 	public void setUser(User user) {
 		this.user = user;
 	}
+
 
 }

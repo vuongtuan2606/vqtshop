@@ -8,7 +8,7 @@
     <link rel='stylesheet' type='text/css' media='screen' href='../fontawesome-free-6.1.1-web/css/all.css'>
     
     <!-- css styles -->
-    <link rel='stylesheet' type='text/css' media='screen' href='${base}/css/style.css'>
+    <link rel='stylesheet' type='text/css' media='screen' href='${base}/css/fontend/style.css'>
     
       <!-- css styles -->
-    <link rel='stylesheet' type='text/css' media='screen' href='${base}/css/grid.css'>
+    <link rel='stylesheet' type='text/css' media='screen' href='${base}/css/fontend/grid.css'>
