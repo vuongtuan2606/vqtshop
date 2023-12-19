@@ -20,6 +20,8 @@ li{
     margin: 0;
     padding: 0;
 }
+
+
 .color-header{
     color: black;
 }
@@ -1322,8 +1324,47 @@ accordion__products__list__color {
 
 
 
+.Model__content{
+	display:none;
+}
 
+.show-modal{
+    background-color: #f5f4f4;
+    width: 400px;
+    height: 200px;
+    border-radius: 10px;
+    top: 0px;
+    position: fixed;
+    right: 0px;
+}
+.modal__body{
+    color: black;
+    font-size: 15px;
+    font-weight: 600;
+    text-transform: uppercase;
+    padding: 10px;
+    text-align: center;
+    height: 50%;
+}
+.modal__button{
+    height: 50%;
 
+}
+.modal__button button:first-child{
+    float: left;
+    margin-left: 50px;
+
+}
+
+.modal__button button:last-child{
+    float: right;
+    margin-right: 50px;
+    background-color: #285a5d;
+    border: 1px solid #285a5d;
+
+}
+
+/*Payment orders */
 
 
 
@@ -1594,8 +1635,6 @@ box-sizing: border-box;
 #tab1 {
     display: block;
 }
-
-
 
 
     .swiper {

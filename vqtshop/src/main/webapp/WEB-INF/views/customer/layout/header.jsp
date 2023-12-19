@@ -74,7 +74,7 @@
                                         <i class="bi bi-person-circle"></i>
                                     </div>
                                     <ul class="dropdown-menu set__dropdown-menu">
-                                        <li><button class="dropdown-item set__dropdown-item" type="button">Đăng nhập</button></li>
+                                        <li><a href="${base}/login"><button class="dropdown-item set__dropdown-item" type="button">Đăng nhập</button> </a></li>
                                         <li><button class="dropdown-item set__dropdown-item" type="button">Đăng ký</button></li>
                                     </ul>
                             </div>                          

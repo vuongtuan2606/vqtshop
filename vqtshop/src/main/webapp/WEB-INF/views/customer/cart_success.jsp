@@ -80,10 +80,22 @@
 
                                         <div  class="gridf">
                                             <div class="cart-page__product__remote">
-                                                <button  type="button" onclick="DeleteProduct(${ci.productId})"  ><i class="bi bi-x-circle"></i></button>
+                                                <button  type="button" onclick="toggleModal(${count})"  ><i class="bi bi-x-circle"></i></button>
                                             </div>
                                         </div>
+                                         <div id="myModal${count }" class="Model__content">
+	                                     	<div  class="show-modal">
+		                                     	<div class="modal__body">    
+		                                            <p>Bạn có muốn xóa sản phẩm :${ci.productName } ?</p>
+		                                        </div>
+		                                        <div class="modal__button">
+		                                            <button type="button" class="btn btn-secondary" onclick="CloseModal(${count})" >Cancel</button>
+								                    <button type="button" class="btn btn-primary"  onclick="DeleteProduct(${ci.productId})">Accept!</button>
+		                                        </div>
+	                                     	</div>
+                                    	</div>
                                     </div>
+                                    
                                 </div>
                                 </c:forEach>
                                  <c:set var="count" value="${count + 1}" scope="page"/>
@@ -113,26 +125,29 @@
      <jsp:include page="/WEB-INF/views/customer/layout/footer.jsp"></jsp:include>
     <jsp:include page="/WEB-INF/views/customer/layout/js.jsp"></jsp:include>
     <script type="text/javascript">
-function DeleteProduct(productId) {
-
-	var data = {
-			productId: productId,
-	};
-
-	jQuery.ajax({
-		url:  '${base}' + "/cart/deleteProduct",
-		type: "post",						
-		contentType: "application/json",
-		data: JSON.stringify(data),
-
-		dataType: "json", 
-		success: function(jsonResult) {
-			location.reload(); 
-		},
-		error: function(jqXhr, textStatus, errorMessage) {
-			alert("error");
+		function DeleteProduct(productId) {
+		
+			var data = {
+					productId: productId,
+			};
+		
+			jQuery.ajax({
+				url:  '${base}' + "/cart/deleteProduct",
+				type: "post",						
+				contentType: "application/json",
+				data: JSON.stringify(data),
+		
+				dataType: "json", 
+				success: function(jsonResult) {
+					location.reload(); 
+				},
+				error: function(jqXhr, textStatus, errorMessage) {
+					alert("error");
+				}
+			});
 		}
-	});
-}
+		
+	
+
 </script>
 </body>

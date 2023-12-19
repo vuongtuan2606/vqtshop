@@ -18,6 +18,6 @@
 	   
 	   
 	<!-- Paging phân trang -->
-	<link href="${base}/css/simplePagination.css" rel="stylesheet" />   
+	<link href="${base}/css/administrator/simplePagination.css" rel="stylesheet" />   
 	      <!-- css styles -->
 	<%--     <link rel='stylesheet' type='text/css' media='screen' href='${base}/css/grid.css'> --%>

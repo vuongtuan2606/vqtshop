@@ -73,9 +73,21 @@ function formatPrice(total){
 }
 
 
+document.addEventListener("DOMContentLoaded", function() {
+    var modal = document.getElementById("myModal"+i);
+	modal.style.display = "block";
+});
 
 
 
+ function toggleModal(count) {
+        var modal = document.getElementById("myModal" + count);
+       modal.style.display = "block";
+}
+ function CloseModal(count) {
+        var modal = document.getElementById("myModal" + count);
+        modal.style.display = "none";
+}
 
 
 // Lấy tất cả các product link
