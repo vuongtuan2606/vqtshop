@@ -16,9 +16,11 @@ import org.springframework.security.core.GrantedAuthority;
 
 
 
+
+
 @Entity
 @Table(name = "tbl_roles")
-public class Role extends BaseEntity  implements GrantedAuthority {
+public class Role extends BaseEntity implements GrantedAuthority  {
 
 	@Column(name = "name", length = 200, nullable = false)
 	private String name;
@@ -61,7 +63,7 @@ public class Role extends BaseEntity  implements GrantedAuthority {
 	}
 	@Override
 	public String getAuthority() {
-		// TODO Auto-generated method stub
+		
 		return this.name;
 	}
 

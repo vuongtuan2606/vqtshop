@@ -5,7 +5,7 @@
                             <img src="../img/avatar.jpg"  alt="">
                         </div>
                         <div class="name">
-                            <a href="">Tuấn Vương</a>
+                            <a href="">${userLogined.username}</a>
                         </div>
                     </div>
                     <div class="menu_manager ">

@@ -24,12 +24,12 @@
     <section class="bread-crumb">
         <div class="container">
             <div class="bread-crumb__title">
-                ĐĂNG NHẬP TÀI KHOẢN
+                ĐĂNG KÝ TÀI KHOẢN
             </div>
             <nav aria-label="breadcrumb " class="bread-crumb__List">
                 <ol class="breadcrumb bread-crumb__List__ol">
                   <li class="breadcrumb-item bread-crumb__List__item"><a href="#">Trang chủ</a></li>
-                  <li class="breadcrumb-item active bread-crumb__List__item" aria-current="page">Đăng nhập tài khoản</li>
+                  <li class="breadcrumb-item active bread-crumb__List__item" aria-current="page">Đăng ký tài khoản</li>
                 </ol>
             </nav>
         </div>
@@ -42,51 +42,48 @@
                     <div class="page-login account-login__box-shadow">
                         <div id="login" class="row">
                             <ul class="col-xl-12 account-login__menu__list">
-                                <li class="active">
-                                    <a href="#" title="Đăng nhập">Đăng nhập</a>
+                                <li >
+                                    <a href="${base }/login" title="Đăng nhập">Đăng nhập</a>
                                 </li>
-                                <li>
-                                    <a href="${base}/home/register" title="Đăng ký">Đăng ký</a>
+                                <li class="active">
+                                    <a href="#" title="Đăng ký">Đăng ký</a>
                                 </li>
                             </ul>
-                            <div id="nd-login">
-                                <form action="${base }/login_processing_url" method="POST" id="customer_login">
+
+                            <div class="col-xl-12" id="nd-login">
+                                <sf:form  modelAttribute="User" action="${base}/home/register" method="post"  enctype="multipart/form-data">
                                     <div class="form-signup">
                                         <br>
                                     </div>
-                                    <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
-		                             <c:if test="${not empty param.login_error}">
-										<div class="alert alert-danger" role="alert">
-											Tài khoản hoặc mật khẩu không đúng vui lòng đăng nhập lại !!
-										</div>
-									</c:if> 
                                     <div class="form-signup clearfix">
                                         <fieldset class="form-group margin-bottom-10">
-                                            <label for="">Tài khoản<span class="required">*</span></label>
-                                            <input name="username"   placeholder="Nhập Tài khoản" type="text" class="form-control form-control-lg" >
+                                            <label>Họ và tên<span class="required">*</span></label>
+                                           <sf:input autocomplete="off" placeholder="Nhập Họ" type="text" path="fullname" class="form-control form-control-lg" required="" data-validation-error-msg="Không được để trống" data-validation="required"></sf:input>
                                         </fieldset>
-                                        
-                                        <fieldset class="form-group margin-bottom-0">
+                                        <fieldset class="form-group margin-bottom-10">
+                                            <label>tài khoản<span class="required">*</span></label>
+                                            <sf:input autocomplete="off" placeholder="Nhập Tên" type="text" path="username" class="form-control form-control-lg"  required="" data-validation-error-msg="Không được để trống" data-validation="required"></sf:input>
+                                        </fieldset>                             
+                                        <fieldset class="form-group margin-bottom-10">
+                                            <label for=""> EMAIL<span class="required">*</span></label>
+                                            <sf:input autocomplete="off" placeholder="Nhập Địa chỉ Email" type="email" path="email" class="form-control form-control-lg" value="" name="email" id="customer_email" required="" data-validation="email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,63}$" data-validation-error-msg="Email sai định dạng"></sf:input>
+                                        </fieldset>
+                                        <fieldset class="form-group  mb-4">
                                             <label>Mật khẩu<span class="required">*</span></label>
-                                            <input name="password"  placeholder="Nhập Mật khẩu" type="password" class="form-control form-control-lg" >
-                                        </fieldset>
-                                        
-                                         <fieldset class="">
-                                            <input type="checkbox" name="remember-me" > Nhớ mật khẩu
+                                            <sf:input autocomplete="off" placeholder="Nhập Mật khẩu" type="password"  path="password" class="form-control form-control-lg" value="" name="password" id="customer_password" data-validation-error-msg="Không được để trống" data-validation="required"></sf:input>
                                         </fieldset>
                                         <div class="clearfix"></div>
-                                        
-                                        <p class="text-right recover">
+                                        <!-- <p class="text-right recover">
                                             <a href="#" class="btn-link-style"  title="Quên mật khẩu?">Quên mật khẩu?</a>
-                                        </p>
+                                        </p> -->
                                         <div class="text-center" >
-                                            <button class="btn btn-style btn-blues" type="submit" value="Đăng nhập">Đăng nhập</button>
+                                            <button class="btn btn-style btn-blues" type="submit" value="Đăng ký">Đăng ký</button>
                                         </div>
+                                        
                                     </div>
-
-                                </form>
-
+                                </sf:form>
                             </div>
+
                         </div>
 
                     </div>

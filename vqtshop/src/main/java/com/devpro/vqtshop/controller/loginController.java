@@ -16,13 +16,14 @@ import org.springframework.web.bind.annotation.RequestMethod;
 public class loginController extends BaseController{
 
 	@RequestMapping(value = { "/login" }, method = RequestMethod.GET)
-	public String home(final Model model, 
-	   				   final HttpServletRequest request, 
-	   				   final HttpServletResponse response)
-	throws IOException{
-		
-		
+	public String login(final Model model, 
+				   				   final HttpServletRequest request, 
+				   				   final HttpServletResponse response)
+	   						   	   throws IOException{
+
 		// đường dẫn tới file view
 		return "login"; // -> /WEB-INF/views/customer/index.jsp
     }
+	
+
 }

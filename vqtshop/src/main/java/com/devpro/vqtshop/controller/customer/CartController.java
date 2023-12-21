@@ -45,6 +45,15 @@ public class CartController extends BaseController {
 											   final HttpServletResponse response) throws IOException {
 		return "customer/cart_success"; // -> đường dẫn tới View.
 	}
+	@RequestMapping(value = { "/payorder" }, method = RequestMethod.GET)
+	public String payorder(final Model model, 
+					   				    final HttpServletRequest request, 
+					   				    final HttpServletResponse response)
+	   						     		throws IOException{
+  
+		// đường dẫn tới file view
+		return "customer/payorder"; // -> /WEB-INF/views/customer/index.jsp
+    }
 	
 	@RequestMapping(value = { "/cart/checkout" }, method = RequestMethod.POST)
 	public String cartFinished(final Model model, 

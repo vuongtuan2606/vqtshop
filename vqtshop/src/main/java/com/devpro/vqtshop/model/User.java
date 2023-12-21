@@ -21,9 +21,10 @@ import org.springframework.security.core.userdetails.UserDetails;
 
 
 
+
 @Entity
 @Table(name = "tbl_user")
-public class User extends BaseEntity implements UserDetails   {
+public class User extends BaseEntity   implements UserDetails   {
 	
 	@Column(name = "fullname", length = 100, nullable = false)
 	private String fullname;
@@ -125,28 +126,27 @@ public class User extends BaseEntity implements UserDetails   {
 	}
 	@Override
 	public Collection<? extends GrantedAuthority> getAuthorities() {
-		// TODO Auto-generated method stub
+		
 		return this.roles;
 	}
-
 	@Override
 	public boolean isAccountNonExpired() {
-		// TODO Auto-generated method stub
+		
 		return true;
 	}
 	@Override
 	public boolean isAccountNonLocked() {
-		// TODO Auto-generated method stub
+
 		return true;
 	}
 	@Override
 	public boolean isCredentialsNonExpired() {
-		// TODO Auto-generated method stub
+	
 		return true;
 	}
 	@Override
 	public boolean isEnabled() {
-		// TODO Auto-generated method stub
+		
 		return true;
 	}
 

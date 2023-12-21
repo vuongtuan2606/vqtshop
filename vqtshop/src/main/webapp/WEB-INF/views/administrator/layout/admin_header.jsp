@@ -5,7 +5,7 @@
                 <div class="col-xxl-12 col-xl-12 col-lg-12   ">
                     <div class="logout">
                         <div class="logout_in">
-                            <a href=""><i class="bi bi-box-arrow-right"></i></a>
+                            <a href="${base }/logout"><i class="bi bi-box-arrow-right"></i></a>
                         </div>
                     </div>
                 </div>

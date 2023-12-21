@@ -6,8 +6,6 @@ import org.springframework.util.StringUtils;
 import com.devpro.vqtshop.model.User;
 
 
-
-
 @Service
 public class UserService extends BaseService<User> {
 	

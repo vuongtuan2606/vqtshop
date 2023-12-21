@@ -1,4 +1,8 @@
-	<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+	<!-- import JSTL -->
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 	<div class="header">
        <div class="middle-header ">
             <div class="container">
@@ -70,13 +74,23 @@
                             </li>
                             <li class="user">
                             <div class="dropdown">
-                                    <div class="icon-user" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                        <i class="bi bi-person-circle"></i>
-                                    </div>
-                                    <ul class="dropdown-menu set__dropdown-menu">
-                                        <li><a href="${base}/login"><button class="dropdown-item set__dropdown-item" type="button">Đăng nhập</button> </a></li>
-                                        <li><button class="dropdown-item set__dropdown-item" type="button">Đăng ký</button></li>
+                                 <div class="icon-user" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                     <i class="bi bi-person-circle"></i>
+                                 </div>
+                                  <c:choose>
+                                  	 <c:when test="${isLogined }">
+                                  		<ul class="dropdown-menu set__dropdown-menu">
+                                       <li><a href=""><button class="dropdown-item set__dropdown-item" type="button"> ${userLogined.username}</button> </a></li>
+                                       <li><a href="${base }/logout"><button class="dropdown-item set__dropdown-item" type="button">Đăng xuất</button></a></li>
+                                   </ul>
+                                 </c:when>
+                                  <c:otherwise>
+                                  		<ul class="dropdown-menu set__dropdown-menu">
+                                        <li><a href="${base }/login"><button class="dropdown-item set__dropdown-item" type="button"> đăng nhập</button> </a></li>
+                                        <li><a href="${base }/home/register"><button class="dropdown-item set__dropdown-item" type="button">đăng ký</button></a></li>
                                     </ul>
+                                   </c:otherwise> 
+                                  </c:choose>
                             </div>                          
                             </li>
                             <li class="cart">

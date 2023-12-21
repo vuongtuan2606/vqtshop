@@ -1,9 +1,14 @@
+
+
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 
-<!-- import JSTL -->
+<!-- taglib JSTL -->
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+
+<!-- taglib SPRING-FORM -->
+<%@ taglib prefix="sf" uri="http://www.springframework.org/tags/form"%>
 
 <!DOCTYPE html>
 <html>
@@ -77,7 +82,7 @@
 												<button class="btt" onclick="UpdateQuanlityCart('${base }', ${ci.productId}, 1)" value="+"  type="button">+</button>                   
                                             </div>
                                         </div>
-
+									
                                         <div  class="gridf">
                                             <div class="cart-page__product__remote">
                                                 <button  type="button" onclick="toggleModal(${count})"  ><i class="bi bi-x-circle"></i></button>
@@ -94,6 +99,7 @@
 		                                        </div>
 	                                     	</div>
                                     	</div>
+                                    	
                                     </div>
                                     
                                 </div>
@@ -103,17 +109,27 @@
                             </div>
                             <div class="cart-page__footer">
                                 <div class=" offset-8">
-                                    <!-- <div class="cart-page__footer__subtotal">
+                                     <div class="cart-page__footer__subtotal">
                                         <div class="cart-page__footer__subtotal__left">Tổng tiền:</div>
                                         <div class="cart-page__footer__subtotal__right ">
-                                            <p class="totalPrice"></p>                         
+                                           <p class="totalPrice"> </p>                    
                                         </div>
-                                    </div> -->
-                                    <div class="cart-page__footer__checkout">
-                                        <button type="button">
-                                            Thanh toán
-                                        </button>
-                                    </div>
+                                    </div> 
+                                    
+                                    
+                                     <c:choose>
+				                    	<c:when test="${isLogined}">
+				                    		<div class="cart-page__footer__checkout" >
+						                        <a   href="${base}/payorder"> Thanh toán</a>
+						                    </div>
+				                    	</c:when>
+				                    	
+				                    	<c:otherwise>
+				                    	   <div class="cart-page__footer__checkout" >
+				                    	      <a  href="${base}/login" > Đăng nhập tài khoản để thanh toán</a>
+				                    	   </div>
+				                    	</c:otherwise>
+				                    </c:choose>
                                  </div>   
                             </div>
                         </form>

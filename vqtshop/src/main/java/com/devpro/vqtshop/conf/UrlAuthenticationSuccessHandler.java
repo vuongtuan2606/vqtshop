@@ -50,7 +50,7 @@ public class UrlAuthenticationSuccessHandler implements AuthenticationSuccessHan
 	 */
 	protected String determineTargetUrl(final Authentication authentication) {
 		Map<String, String> roleTargetUrlMap = new HashMap<>();
-		roleTargetUrlMap.put("ADMIN", "/admin/home");
+		roleTargetUrlMap.put("ADMIN", "/admin/product/management");
 		roleTargetUrlMap.put("GUEST", "/home");
 
 		final Collection<? extends GrantedAuthority> authorities = authentication.getAuthorities(); // list này authorities là tên của role
