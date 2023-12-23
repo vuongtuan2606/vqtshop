@@ -24,7 +24,7 @@
 <body>
     <jsp:include page="/WEB-INF/views/administrator/layout/admin_header.jsp"></jsp:include>
     <section class="section-1 ">
-        <div class="container-fluid ">
+        <div class="container-fluid set-gutter-none ">
             <div class="row  ">
                 
                 <jsp:include page="/WEB-INF/views/administrator/layout/admin_menu.jsp"></jsp:include>
@@ -45,9 +45,10 @@
                         <div class="col-xxl-12 col-xl-12 col-md-12  "> 
                          	<form class="form-inline" action="${base}/admin/products/list" method="get">
                             <div class="product_manager">
-                                 <div class="element_button">
+                                 
+                                <div class="element_button">
                                     <div class="d-flex element_button__search ">
-                                        <input id="page" name="page" class="form-control" value="${searchModel.page }">  
+                                         <input id="page" name="page" class="form-control" value="${searchModel.page }">  
                                         
                                         <!-- tìm kiếm theo tên sản phẩm -->
                                         <input type="text" id="keyword" name="keyword" class="form-control" placeholder="Search" autocomplete="off" value="${searchModel.keyword }" style="margin-right: 10px;">                                
@@ -58,12 +59,12 @@
                                                 <option value="${category.id }">${category.name }</option>
                                             </c:forEach>
                                         </select>                                  
-                                        <button type="submit" id="btnSearch" name="btnSearch" value="Search" class="btn btn-primary">Tìm kiếm</button>
+                                        <button type="submit"  name="btnSearch" value="Search" class="btn  " id="btnSearch">Seach</button>
                                     </div> 
                                     <div id="element_button_1" >
-                                        <a href="${base }/admin/product/management">Thêm sản phẩm</a>
+                                         <a href="${base }/admin/product/management">Thêm sản phẩm</a>
                                     </div>
-                                </div>  
+                                </div>
                                 <div class="table_order">
                                     <div class="title">
                                         <h3>Danh sách sản phẩm</h3>
@@ -115,8 +116,8 @@
 														<img src="${base }/upload/${p.avatar}" width="100" height="100">
 													</td>
                                                     <td>
-                                                        <li><a class="btn btn-primary" href="${base }/admin/product/management/${p.id}">Sửa</a></li>
-                                                        <li><a class="btn btn-danger" onclick="ShowModal(${count})" role="button" >Delete</a></li>
+                                                        <li><a class="" href="${base }/admin/product/management/${p.id}"><i class="bi bi-pencil-square"></i></a></li>
+                                                        <li><a class="" onclick="ShowModal(${count})" role="button" ><i class="bi bi-trash"></i></a></li>
                                                         
                                                         <div id="myModal${count }" class="modal">																
 														  <!-- Modal content -->

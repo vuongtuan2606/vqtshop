@@ -24,8 +24,9 @@ li{
 
 
 body{
-    background-color: rgb(230, 230, 230)
+    background-color: rgb(230, 230, 230) ! important;
 }
+
 
 .logout {
     position: relative;
@@ -57,6 +58,10 @@ body{
 .section-1{
    margin-top: 40px;
 
+
+}
+.menu_manager__all{
+	background-color: #285a5d;
 }
 .user_manager{
     background: #355f61;
@@ -88,7 +93,6 @@ body{
 /* menu */
 .menu_manager{
     background-color: #285a5d;
-    height: 100%!important;
 
 }
 .menu_manager ul li{
@@ -185,6 +189,9 @@ text-align: center;
 color: #120414;
 
 }
+.table_content i{
+	    font-size: 22px;
+}
 
 .table_content li:first-child {
 margin: 10px;
@@ -196,11 +203,14 @@ margin: 10px;
     border-radius: 10px;
 }
 
-
-.element_button__search button{
-    --bs-btn-bg:#355f61;
-     --bs-btn-border-color:none;
-     --bs-btn-hover-bg:#0e686b;
+button#btnSearch{
+    background-color: #355f61;
+    color: white;
+    
+}
+button#btnSearch:hover{
+	 background-color: #0e686b;
+    color: white;
 }
 
 .element_button{
@@ -224,6 +234,7 @@ margin: 10px;
     margin-bottom: 5px;
     color: #120414;
 }
+
 
 /* form add product */
 

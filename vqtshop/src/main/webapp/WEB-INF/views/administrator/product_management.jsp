@@ -18,7 +18,7 @@
 <body>
    <jsp:include page="/WEB-INF/views/administrator/layout/admin_header.jsp"></jsp:include>
     <section class="section-1 ">
-        <div class="container-fluid ">
+        <div class="container-fluid  ">
             <div class="row  ">
                  <jsp:include page="/WEB-INF/views/administrator/layout/admin_menu.jsp"></jsp:include>
                 <div class="col-xxl-10 col-xl-10 col-lg-10 ">
@@ -159,6 +159,7 @@
                 </div>
             </div>
         </div>
+       </div>
     </section>
     <jsp:include page="/WEB-INF/views/administrator/layout/js.jsp"></jsp:include>
       <script>

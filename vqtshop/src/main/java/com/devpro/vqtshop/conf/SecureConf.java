@@ -26,7 +26,7 @@ public class SecureConf extends WebSecurityConfigurerAdapter {
 		.antMatchers("/css/**", "/js/**", "/upload/**", "/img/**", "/login", "/logout").permitAll()
 		
 		//các request kiểu: "/admin/" là phải đăng nhập (authenticated)
-		.antMatchers("/admin/**").hasAnyAuthority("ADMIN")
+		.antMatchers("/admin/**").hasAnyAuthority("ADMIN","MANAGER")
 		
 		.and()
 		
