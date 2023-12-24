@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.devpro.vqtshop.controller.BaseController;
-import com.devpro.vqtshop.dto.Employee;
+
 import com.devpro.vqtshop.model.Product;
 import com.devpro.vqtshop.services.ProductService;
 

@@ -13,7 +13,7 @@
                     <div class="col-xl-8 col-lg-8 col-md-6 center-header">
                         <ul>
                             <li id="menu-product">
-                                <a href="../Index/products.html">Giày Dép</a>
+                                <a href="${base }/home/listproduct/1">Giày Dép</a>
                                 <div class="menu-product-drop-down">
                                     <ul>
                                         <li>

@@ -56,7 +56,7 @@
                                         <select class="form-control" name="roleId" id="roleId" style="margin-right: 10px;">
                                             <option value="0">All</option>
 											<option value="1">ADMIN</option>
-											<option value="2">GUEST</option>
+											<option value="2">USER</option>
 											<option value="3">MANAGER</option>
                                         </select>                                  
                                         <button type="submit"  name="btnSearch" value="Search" class="btn  " id="btnSearch">Seach</button>

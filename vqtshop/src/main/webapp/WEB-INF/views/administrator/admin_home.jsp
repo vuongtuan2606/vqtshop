@@ -1,4 +1,14 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+
+<!-- SPRING FORM -->
+<%@ taglib prefix="sf" uri="http://www.springframework.org/tags/form"%>
+
+
+<!-- import JSTL -->
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -31,94 +41,82 @@
                         </div>
                     </div>
                     <div class="row">
-                        <div class="col-xxl-6 col-xl-6">
+                        <div class="col-xxl-4 col-xl-4">
                             <div class="total_customers">
-                                <div class="total_customers__icon col-4">
+                                <div class="total_customers__icon col-3">
                                     <i class="bi bi-people"></i>
                                 </div>
-                                <div class="total_customers__info col-8 ">
-                                    <h4>TỔNG SỐ KHÁCH HÀNG</h4>
-                                    <P>100 khách hàng</P>
-                                    <p class="all_customers">TỔng số khách hàng được quản lý</p>
+                                <div class="total_customers__info col-9  " style="padding: 10px 10px;">
+                                    <h5>TỔNG SỐ KHÁCH HÀNG</h5>
+                                    <P>${users } khách hàng </P>
+                                    
                                 </div>
                             </div>
                         </div>
-                        <div class="col-xxl-6 col-xl-6 ">
+                        <div class="col-xxl-4 col-xl-4 ">
                             <div class="total_customers">
-                                <div class="total_customers__icon col-4">
+                                <div class="total_customers__icon col-3">
                                     <i class="bi bi-bag-check"></i>
                                 </div>
-                                <div class="total_customers__info  col-8">
-                                    <h4>TỔNG SỐ SẢN PHẨM</h4>
-                                    <P>100 sản phẩm</P>
-                                    <p class="all_product">TỔng số sản phẩm được quản lý</p>
+                                <div class="total_customers__info  col-9" style="padding: 10px 10px;">
+                                    <h5>TỔNG SỐ SẢN PHẨM</h5>
+                                    <P>${product } sản phẩm</P>
+                                   
                                 </div>
                             </div>
                         </div>
-                        <div class="col-xxl-6 col-xl-6 ">
+                        <div class="col-xxl-4 col-xl-4 ">
                             <div class="total_customers">
-                                <div class="total_customers__icon col-4">
+                                <div class="total_customers__icon col-3">
                                     <i class="bi bi-bag-check"></i>
                                 </div>
-                                <div class="total_customers__info col-8 ">
-                                    <h4>TỔNG ĐƠN HÀNG</h4>
-                                    <P>100 đơn hàng</P>
-                                    <p class="all_order">TỔng số hóa đơn bán trong tháng</p>
+                                <div class="total_customers__info col-9 " style="padding: 10px 10px;">
+                                    <h5>TỔNG ĐƠN HÀNG</h5>
+                                    <P>${orders} đơn hàng tháng này</P>
+                                    
                                 </div>
                             </div>
                         </div>
-                        <div class="col-xxl-6 col-xl-6 ">
-                            <div class="total_customers">
-                                <div class="total_customers__icon col-4">
-                                    <i class="bi bi-exclamation-octagon-fill"></i>
-                                </div>
-                                <div class="total_customers__info  col-8">
-                                    <h4>SẮP HẾT HÀNG</h4>
-                                    <P>4 sản phẩm</P>
-                                    <p class="all_order">Số sản phẩm cảnh báo cần nhập thêm</p>
-                                </div>
-                            </div>
-                        </div>
+                        
                        
                     </div>
                     <div class="row">
                         <div class="col-xxl-12 col-xl-12 col-lg-12  ">
                             <div class="table_order ">
                                 <div class="title">
-                                    <h3>Tình trạng đơn hàng</h3>
+                                    <h3>Tình trạng đơn hàng gần đây</h3>
                                 </div>
                                 <div >
                                     <table class="table table-responsive table-hover table-striped table-bordered   table_content" >
                                         <tr>
-                                            <th>ID đơn hàng</th>
+                                            <th>Mã đơn hàng</th>
                                             <th>Tên khách hàng</th>
-                                            <th>Tổng tiền</th>
+                                            <th>Địa chỉ</th>
                                             <th>Trạng thái</th>
                                         </tr>
+                                         <c:forEach items="${listSaleOrder }" var="ListOrder">
                                         <tr>
-                                            <td>A001</td>
-                                            <td>Nguyễn Văn A</td>
-                                            <td>5.000.00đ</td>
-                                            <td>chờ xử lý</td>
+                                            <td>${ListOrder.code }</td>
+                                            <td>${ListOrder.customerName }</td>
+                                            <td>${ListOrder.customerAddress }</td>
+                                            <td>
+						              			<c:choose>
+						              				<c:when test="${ListOrder.orderStatus == 0 }">
+						              					<span class="btn btn-danger">Đã hủy</span>
+						              				</c:when>
+						              				<c:when test="${ListOrder.orderStatus == 1 }">
+						              					<span class="btn btn-warning">Chờ sử lý</span>
+						              				</c:when>
+						              				<c:when test="${ListOrder.orderStatus == 2 }">
+						              					<span class="btn btn-primary">Đang giao</span>
+						              				</c:when>
+						              				<c:when test="${ListOrder.orderStatus == 3 }">
+						              					<span class="btn btn-success">hoàn thành</span>
+						              				</c:when>
+						              			</c:choose>					              			
+											</td>
                                         </tr>
-                                        <tr>
-                                            <td>A002</td>
-                                            <td>Nguyễn Văn b</td>
-                                            <td>5.000.00đ</td>
-                                            <td>chờ xử lý</td>
-                                        </tr>
-                                        <tr>
-                                            <td>A003</td>
-                                            <td>Nguyễn Văn c</td>
-                                            <td>5.000.00đ</td>
-                                            <td>chờ xử lý</td>
-                                        </tr>
-                                        <tr>
-                                            <td>A004</td>
-                                            <td>Nguyễn Văn D</td>
-                                            <td>5.000.00đ</td>
-                                            <td>chờ xử lý</td>
-                                        </tr>
+                                        </c:forEach>
                                     </table>
                                 </div>
                             </div>
@@ -132,36 +130,21 @@
                                 </div>
                                 <div >
                                     <table class="table table-responsive table-hover table-striped table-bordered  table_content " >
+                                    
                                         <tr>
-                                            <th>ID khách hàng</th>
                                             <th>Tên khách hàng</th>
-                                            <th>Ngày sinh</th>
+                                            <th>Tên tài khoản</th>
+                                            <th>email</th>
                                             <th>Số điện thoại</th>
                                         </tr>
+                                        <c:forEach items="${listUser}" var="user">
                                         <tr>
-                                            <td>A001</td>
-                                            <td>Nguyễn Văn A</td>
-                                            <td>21/06/2002</td>
-                                            <td>0899232121</td>
+                                            <td>${user.fullname }</td>
+                                            <td>${user.username }</td>
+                                            <td>${user.email }</td>
+                                            <td>${user.phone }</td>
                                         </tr>
-                                        <tr>
-                                            <td>A002</td>
-                                            <td>Nguyễn Văn b</td>
-                                            <td>21/06/2002</td>
-                                            <td>0899232121</td>
-                                        </tr>
-                                        <tr>
-                                            <td>A003</td>
-                                            <td>Nguyễn Văn C</td>
-                                            <td>21/06/2002</td>
-                                            <td>0899232121</td>
-                                        </tr>
-                                        <tr>
-                                            <td>A003</td>
-                                            <td>Nguyễn Văn C</td>
-                                            <td>21/06/2002</td>
-                                            <td>0899232121</td>
-                                        </tr>                                    
+                                        </c:forEach>                                  
                                     </table>
                                 </div>
                             </div>

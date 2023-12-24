@@ -20,8 +20,6 @@ import org.springframework.security.core.userdetails.UserDetails;
 
 
 
-
-
 @Entity
 @Table(name = "tbl_user")
 public class User extends BaseEntity   implements UserDetails   {

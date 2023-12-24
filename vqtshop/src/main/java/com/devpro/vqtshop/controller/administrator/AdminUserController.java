@@ -45,7 +45,7 @@ public class AdminUserController extends BaseController{
 		searchModel.setPage(getCurrentPage(request));
 		
 		PagerData<User> users = userService.search(searchModel);
-		
+
 		model.addAttribute("users", users);
 		model.addAttribute("searchModel", searchModel);
 		

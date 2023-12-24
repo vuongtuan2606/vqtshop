@@ -15,6 +15,7 @@ import com.devpro.vqtshop.dto.ProductSearchModel;
 //import com.devpro.vqtshop.dto.ProductSearchModel;
 import com.devpro.vqtshop.model.Product;
 import com.devpro.vqtshop.model.ProductImages;
+import com.devpro.vqtshop.model.ProductsRepository;
 
 
 
@@ -26,7 +27,8 @@ public class ProductService extends BaseService<Product> {
 
 	@Autowired
 	private ProductImagesService productImagesService;
-	
+	@Autowired
+	private ProductsRepository productsRepository;
 	
 	@Autowired 
 	private SizeQSizeService sizeQSizeService;
@@ -35,7 +37,10 @@ public class ProductService extends BaseService<Product> {
 	protected Class<Product> clazz() {
 		return Product.class;
 	}
-	
+	  public Long getProductsCount() {
+	      
+	        return productsRepository.countProducts();
+	    }
 	/**
 	 * dùng để kiểm tra xem admin có upload ảnh product hay không
 	 * @param images

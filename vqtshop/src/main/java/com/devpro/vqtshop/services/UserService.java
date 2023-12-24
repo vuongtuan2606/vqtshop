@@ -1,24 +1,37 @@
 package com.devpro.vqtshop.services;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
 
 import com.devpro.vqtshop.dto.UserSearchModel;
 import com.devpro.vqtshop.model.User;
+import com.devpro.vqtshop.model.UserRepository;
 
 
 @Service
 public class UserService extends BaseService<User> {
 	
+  @Autowired
+    private UserRepository userRepository;
+ 
 	@Override
 	protected Class<User> clazz() {
 		return User.class;
 	}
 
+
+    public Long getUserCount() {
+      
+        return userRepository.countUsers();
+    }
+
 	public User loadUserByUsername(String userName) {
 		String sql = "select * from tbl_user u where u.username = '" + userName + "' and status = 1";
 		return this.getEntityByNativeSQL(sql);
 	}
+	
+	
 	
 	public PagerData<User> search(UserSearchModel searchModel) {
 		// khởi tạo câu lệnh

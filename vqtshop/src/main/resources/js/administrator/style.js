@@ -18,21 +18,7 @@ setInterval(updateDateTime, 1000);
 // Gọi hàm để hiển thị ngày giờ khi trang được tải
 updateDateTime();
 
-document.addEventListener("DOMContentLoaded", function () {
-    const menuLinks = document.querySelectorAll('.menu_link');
 
-    menuLinks.forEach(link => {
-        link.addEventListener('click', function () {
-            // Loại bỏ lớp 'active' từ tất cả các liên kết
-            menuLinks.forEach(link => {
-                link.classList.remove('active');
-            });
-
-            // Thêm lớp 'active' cho liên kết được click
-            this.classList.add('active');
-        });
-    });
-});
 
 function ShowModal(i) {
 			var modal = document.getElementById("myModal"+i);

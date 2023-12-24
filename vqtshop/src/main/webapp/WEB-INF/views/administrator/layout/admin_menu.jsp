@@ -10,9 +10,9 @@
                         </div>
                     </div>
                     <div class="menu_manager  ">
-                        <ul >
-                            <li class="menu_link active">
-                                <a href="../index/homebe.html">
+                        <ul id="menu">
+                            <li class="menu_link ">
+                                <a href="${base }/admin/home">
                                     <i class="bi bi-speedometer2"></i> Bảng điều khiển
                                 </a>
                             </li>
@@ -27,20 +27,16 @@
                                 </a>
                             </li>
                             <li  class="menu_link">
-                                <a href="../index/admin_oder.html">
+                                <a href="${base }/admin/order">
                                     <i class="bi bi-journal-check"></i>Quản lý đơn hàng
                                 </a>
                             </li>
                             <li  class="menu_link">
-                                <a href="">
+                                <a href="${base }/admin/contact">
                                     <i class="bi bi-envelope"></i>Quản lý liên hệ
                                 </a>
                             </li>
-                            <li  class="menu_link">
-                                <a href="">
-                                    <i class="bi bi-wallet"></i> Báo cáo doanh thu
-                                </a>
-                            </li>
+                           
                         </ul>
                     </div>
                 </div>

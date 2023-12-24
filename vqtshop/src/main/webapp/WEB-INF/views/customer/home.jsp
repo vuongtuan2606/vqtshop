@@ -155,7 +155,7 @@
                     </c:forEach> 
                 </div>
                 <div class="view-more">
-                    <a href="">
+                    <a href="${base }/home/listproduct/1"   >
                         Xem tất cả
                     </a>
                 </div>
