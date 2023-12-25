@@ -3,7 +3,7 @@
 				<div class="menu_manager__all h-100 ">
 					<div class="user_manager  ">
                         <div class="avatar">
-                            <img src="../img/avatar.jpg"  alt="">
+                            <img src="${base }/img/avatar.jpg"  alt="">
                         </div>
                         <div class="name">
                             <a href="">${userLogined.username}</a>

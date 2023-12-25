@@ -166,7 +166,7 @@ public class CartController extends BaseController {
 		}
 
 		// tính tổng tiền
-	//	this.calculateTotalPrice(request);
+	this.calculateTotalPrice(request);
 		
 		// trả về kết quả
 		Map<String, Object> jsonResult = new HashMap<String, Object>();
@@ -237,7 +237,7 @@ public class CartController extends BaseController {
 			{
 				currentProductQuality = item.getQuanlity() + cartItem.getQuanlity();
 				item.setQuanlity(currentProductQuality);
-				total = item.getPriceUnit().multiply(BigDecimal.valueOf(currentProductQuality));
+				//total = item.getPriceUnit().multiply(BigDecimal.valueOf(currentProductQuality));
 			}
 		}
 
@@ -251,7 +251,7 @@ public class CartController extends BaseController {
 		jsonResult.put("status", "TC");
 		jsonResult.put("totalItems", getTotalItems(request));
 		jsonResult.put("currentProductQuality", currentProductQuality);
-		jsonResult.put("total", total);
+		//jsonResult.put("total", total);
 		jsonResult.put("totalPrice", formatCurrency(calculateTotalPrice(request)));
 		
 		session.setAttribute("totalItems", getTotalItems(request));

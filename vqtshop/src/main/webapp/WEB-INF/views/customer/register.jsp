@@ -21,7 +21,7 @@
 </head>
 <body>
     <jsp:include page="/WEB-INF/views/customer/layout/header.jsp"></jsp:include>
-    <section class="bread-crumb">
+      <section class="bread-crumb" style="background-image: url(${base}/img/bread-crumb/bread-crumb.webp)">
         <div class="container">
             <div class="bread-crumb__title">
                 ĐĂNG KÝ TÀI KHOẢN

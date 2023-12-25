@@ -39,8 +39,8 @@ li{
     justify-content: center;
 }
 .right-header img{
-    width: 134px;
-    height: 30px;
+    width: 125px;
+
   }
     
 .center-header{
@@ -764,7 +764,7 @@ input[type="email"]{
 
 .bread-crumb{
     padding: 15px 0;
-    background-image: url(../img/footer.webp);
+    background-image: url(${base}/img/bread-crumb/bread-crumb.webp);
     min-height: 255px;
     background-size: cover;
     display: flex;
@@ -1408,7 +1408,7 @@ accordion__products__list__color {
 .product__oder td:first-child{
     border-right: 1px solid #ddd;
     padding: 8px;
-    text-align: center;
+   
     word-wrap: break-word; /* Tự động xuống dòng khi cần thiết */
     max-width: 200px; /* Đặt độ rộng tối đa của ô */
     overflow: hidden; /* Ẩn phần vượt quá độ rộng tối đa */
@@ -1417,7 +1417,7 @@ accordion__products__list__color {
 .product__oder td:last-child{
     border-right:none;
     padding: 8px;
-    text-align: center;
+
     word-wrap: break-word; /* Tự động xuống dòng khi cần thiết */
     max-width: 200px; /* Đặt độ rộng tối đa của ô */
     overflow: hidden; /* Ẩn phần vượt quá độ rộng tối đa */

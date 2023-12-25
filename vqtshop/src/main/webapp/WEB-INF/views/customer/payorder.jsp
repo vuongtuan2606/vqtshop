@@ -67,15 +67,14 @@
                                 <thead>
                                     <tr>
                                         <th>Sản phẩm</th>
-                                        <th>Tổng</th>
+                                        
                                     </tr>
                                 </thead>
                                 <tbody>
                                	 <c:forEach items="${cart.cartItems }" var="ci">
                                     <tr>
-                                        <td>${ci.productName } x ${ci.quanlity }</td>
-                                        <td><span id="totalPriceItem_${ci.productId}"></span></td>
-                                    </tr>
+                                        <td>${ci.productName } - số lượng ${ci.quanlity }</td>
+                                       
                                   </c:forEach>
                                 </tbody>
                                </table>
@@ -104,5 +103,20 @@
 
     <jsp:include page="/WEB-INF/views/customer/layout/footer.jsp"></jsp:include>
     <jsp:include page="/WEB-INF/views/customer/layout/js.jsp"></jsp:include>
+    <script type="text/javascript">
+    
+    document.addEventListener("DOMContentLoaded", function() {
+	    
+	    const baseUrl = "${base}";
+	    const productId = "${productId}";
+	    const quanlity = "${quanlity }";
+	    
+	
+	  
+	    UpdateQuanlityCart(baseUrl, productId, quanlity);
+	    
+	});
+    </script>
+
 </body>
 </html>

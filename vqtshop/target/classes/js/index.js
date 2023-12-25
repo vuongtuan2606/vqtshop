@@ -34,6 +34,7 @@ function AddToCart(baseUrl, productId, quanlity) {
 
 
 
+
 // Cập nhật số lượng sản phẩm trong giỏ hàng khi click vào button '+' hoặc '-'
 //quanlity  = -1 là click vào button -
 //quanlity  = +1 là click vào button +

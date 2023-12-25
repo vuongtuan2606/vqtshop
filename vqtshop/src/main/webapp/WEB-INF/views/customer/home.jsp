@@ -31,13 +31,16 @@
                     </div>
                     <div class="carousel-inner">
                         <div class="carousel-item active">
-                            <img src="../img/slider_1.webp" class="d-block w-100" alt="...">
+                            <img src="${base }/img/slide/slider_1.webp" class="d-block w-100" alt="...">
                         </div>
                         <div class="carousel-item">
-                            <img src="../img/slider_2.webp" class="d-block w-100" alt="...">
+                            <img src="${base }/img/slide/slider_2.webp"  class="d-block w-100" alt="...">
                         </div>
                         <div class="carousel-item">
-                            <img src="../img/slider_5.webp" class="d-block w-100" alt="...">
+                            <img src="${base }/img/slide/slider_3.webp"  class="d-block w-100" alt="...">
+                        </div>
+                        <div class="carousel-item">
+                            <img src="${base }/img/slide/slider_4.webp"  class="d-block w-100" alt="...">
                         </div>
                     </div>
                     <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
@@ -110,15 +113,13 @@
                     <a href="">
                         <div id="carouselExampleSlidesOnly" class="carousel slide " data-bs-ride="carousel">
                             <div class="carousel-inner ">
-                              <div class="carousel-item active ">
-                                <img src="../img/sectione3 slide.webp" class="d-block w-100" alt="...">
+                              <div class="carousel-item active  ">
+                                <img src="${base }/img/shoes/shoes_1.webp" class="d-block w-100" alt="...">
                               </div>
-                              <div class="carousel-item ">
-                                <img src="../img/slider_2.webp" class="d-block w-100" alt="...">
-                              </div>
-                              <div class="carousel-item ">
-                                <img src="../img/slider_5.webp" class="d-block w-100" alt="...">
-                              </div>
+                              <div class="carousel-item">
+	                            <img src="${base }/img/slide/slider_4.webp"  class="d-block w-100" alt="...">
+	                        </div>
+                             
                             </div>
                         </div>
                     </a>
@@ -141,7 +142,7 @@
 	                               </div>
 	                               <div class="product__info">
 	                                   <span class="product__brand" >${products.brand.brand_name}</span>
-	                                   <a href="">${products.title }</a>
+	                                   <a href="${base }/home/product-detail/${products.id }">${products.title }</a>
 	                                   <fmt:setLocale value="vi_VN"/>
 	                                   <div class="product__price" >
 	                                   		 <span  style="text-decoration: line-through !important;">

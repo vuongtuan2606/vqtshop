@@ -8,7 +8,7 @@
             <div class="container">
                 <div class="row align-items-center ">
                     <div class="col-xl-2 col-lg-2 col-md-3 right-header"> 
-                        <a href="${base}/home"><img src="../img/logo.webp" alt="" ></a>           
+                        <a href="${base}/home"><img src="${base }/img/mylogo.png" alt="" ></a>           
                     </div>
                     <div class="col-xl-8 col-lg-8 col-md-6 center-header">
                         <ul>

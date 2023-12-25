@@ -23,12 +23,12 @@
 </head>
 <body>
     <jsp:include page="/WEB-INF/views/customer/layout/header.jsp"></jsp:include>
-    <section class="bread-crumb">
+    <section class="bread-crumb" style="background-image: url(${base}/img/bread-crumb/bread-crumb.webp)">
         <div class="container">
             <div class="bread-crumb__title">
                 GIỎ HÀNG
             </div>
-            <nav aria-label="breadcrumb " class="bread-crumb__List">
+            <nav aria-label="breadcrumb " class="bread-crumb__List" >
                 <ol class="breadcrumb bread-crumb__List__ol">
                   <li class="breadcrumb-item bread-crumb__List__item"><a href="${base }/home">Trang chủ</a></li>
                   <li class="breadcrumb-item active bread-crumb__List__item" aria-current="page">Giỏ hàng</li>
@@ -53,6 +53,7 @@
                                 <div>Thông tin sản phẩm</div>
                                 <div>Đơn giá</div>
                                 <div>Số lượng</div>
+                                
                             </div>
                             <div class="cart-page__body">
                             	<c:set var="count" value="0" scope="page" />
@@ -162,6 +163,15 @@
 				}
 			});
 		}
+		document.addEventListener("DOMContentLoaded", function() {
+		    
+		    const baseUrl = "${base}";
+		    const productId = "${productId}";
+		    const quanlity = "${quanlity }";
+
+		  
+		    UpdateQuanlityCart(baseUrl, productId, quanlity);
+		});
 		
 	
 
