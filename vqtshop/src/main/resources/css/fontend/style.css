@@ -1599,7 +1599,6 @@ accordion__products__list__color {
 .btn-buy  button {
     background: #420500;
     border: initial;
-    color: #fff;
     height: 40px;
     border-radius: initial;
     text-align: center;
@@ -1614,6 +1613,11 @@ accordion__products__list__color {
     box-shadow: inset 0 -2px 0 rgba(0,0,0,0.3);
     font-weight: bold;
 }
+.btn-buy  button a{
+	 color: #fff;
+}
+.btn-buy  button a i{}
+
 .btn-buy  button:hover{
     background: #885c5a;
 }

@@ -167,21 +167,21 @@
                 </div>
                 <div class="col-xl-9 col-xxl-9  col-md-9 col-lg-9">
                     <div class="row categorie__products ">
-                     <c:forEach var="product1"  begin = "0" end = "8" items="${product1}">
+                     <c:forEach var="p"  begin = "0" end = "8" items="${product1.data}">
                         <div class="col-xl-3 col-xxl-3 col-lg-3 col-md-4 pb-3">
                              <div class="product__card" >    
                                 <div class="product__image">
-                                     <img src="${base }/upload/${product1.avatar}" />                                
+                                     <img src="${base }/upload/${p.avatar}" />                                
                                 </div>
                                 <div class="product__info">
-	                                   <span class="product__brand" >${product1.brand.brand_name}</span>
-	                                   <a href="">${product1.title }</a>
+	                                   <span class="product__brand" >${p.brand.brand_name}</span>
+	                                   <a href="${base }/home/product-detail/${p.id }">${p.title }</a>
 	                                   <fmt:setLocale value="vi_VN"/>
 	                                   <div class="product__price" >
 	                                   		 <span  style="text-decoration: line-through !important;">
-	                                   		 	<fmt:formatNumber value="${product1.price}" type="currency"/></span>
+	                                   		 	<fmt:formatNumber value="${p.price}" type="currency"/></span>
    											 <span>
-   											 <fmt:formatNumber value="${product1.priceSale}" type="currency"/></span>
+   											 <fmt:formatNumber value="${p.priceSale}" type="currency"/></span>
 	                                   </div>	                                    
 	                           </div>
                             </div>
@@ -217,9 +217,9 @@
         $( document ).ready(function() {
 			
 			$("#paging").pagination({
-				currentPage: ${products.currentPage}, //trang hiện tại
-		        items: ${products.totalItems},	//tổng số sản phẩm
-		        itemsOnPage: ${products.sizeOfPage}, //số sản phẩm trên 1 trang
+				currentPage: ${product1.currentPage}, //trang hiện tại
+		        items: ${product1.totalItems},	//tổng số sản phẩm
+		        itemsOnPage: ${product1.sizeOfPage}, //số sản phẩm trên 1 trang
 		        cssStyle: 'light-theme',
 		        onPageClick: function(pageNumber, event) {
 		        	$('#page').val(pageNumber);

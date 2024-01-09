@@ -74,7 +74,7 @@
                                	 <c:forEach items="${cart.cartItems }" var="ci">
                                     <tr>
                                         <td>${ci.productName } - số lượng ${ci.quanlity }</td>
-                                       
+                                       	
                                   </c:forEach>
                                 </tbody>
                                </table>

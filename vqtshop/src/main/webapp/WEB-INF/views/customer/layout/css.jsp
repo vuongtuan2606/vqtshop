@@ -12,3 +12,7 @@
     
       <!-- css styles -->
     <link rel='stylesheet' type='text/css' media='screen' href='${base}/css/fontend/grid.css'>
+    
+    	   
+	<!-- Paging phân trang -->
+	<link href="${base}/css/fontend/simplePagination.css" rel="stylesheet" /> 

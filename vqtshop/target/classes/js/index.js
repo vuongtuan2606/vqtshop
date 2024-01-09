@@ -66,6 +66,32 @@ function UpdateQuanlityCart(baseUrl, productId, quanlity) {
 	});
 }
 
+function AddToCartInDetail(baseUrl, productId) {
+    	let data = {
+    		productId: productId, // Id sản phẩm
+    		quanlity: $("strong > input").val(), // Số lượng cho vào giỏ hàng
+    	};
+
+    	jQuery.ajax({
+    		url: baseUrl + "/ajax/addToCart", 
+    		type: "post",
+    		contentType: "application/json",
+    		data: JSON.stringify(data),
+
+    		dataType: "json",
+    		success: function(jsonResult) {
+    			//alert(jsonResult.totalItems)
+    			// tăng số lượng sản phẩm trong giỏ hàng trong icon			
+    			$("#iconShowTotalItemsInCart").html(jsonResult.totalItems);
+
+    			/*$([document.documentElement, document.body]).animate({
+    				scrollTop: $("#totalItems").offset().top
+    			}, 2000);*/
+    		},
+    		error: function(jqXhr, textStatus, errorMessage) {	
+    		}
+    	});
+    }
 
 
 function formatPrice(total){

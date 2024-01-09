@@ -45,6 +45,7 @@ public class CartController extends BaseController {
 											   final HttpServletResponse response) throws IOException {
 		return "customer/cart_success"; // -> đường dẫn tới View.
 	}
+	
 	@RequestMapping(value = { "/payorder" }, method = RequestMethod.GET)
 	public String payorder(final Model model, 
 					   				    final HttpServletRequest request, 
@@ -83,6 +84,7 @@ public class CartController extends BaseController {
 		// lấy giỏ hàng
 		HttpSession session = request.getSession();
 		Cart cart = (Cart) session.getAttribute("cart");
+		
 		//tổng giá trị đơn hàng
 		saleOrder.setTotal(cart.getTotalPrice());
 		
@@ -237,7 +239,7 @@ public class CartController extends BaseController {
 			{
 				currentProductQuality = item.getQuanlity() + cartItem.getQuanlity();
 				item.setQuanlity(currentProductQuality);
-				//total = item.getPriceUnit().multiply(BigDecimal.valueOf(currentProductQuality));
+				total = item.getPriceUnit().multiply(BigDecimal.valueOf(currentProductQuality));
 			}
 		}
 

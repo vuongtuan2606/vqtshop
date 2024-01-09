@@ -25,6 +25,7 @@ import com.devpro.vqtshop.model.Contact;
 import com.devpro.vqtshop.model.Product;
 import com.devpro.vqtshop.services.CategoriesService;
 import com.devpro.vqtshop.services.ContactService;
+import com.devpro.vqtshop.services.PagerData;
 import com.devpro.vqtshop.services.ProductService;
 
 @Controller
@@ -35,6 +36,31 @@ public class ProductListController extends BaseController {
 	
 	@Autowired 
 	private CategoriesService categoriesService;
+	
+	
+	@RequestMapping(value = { "/home/productSearch" }, method = RequestMethod.GET)
+	public String ProductSearch(final Model model, 
+	   				   final HttpServletRequest request, 
+	   				   final HttpServletResponse response) {
+		
+		String keyword = request.getParameter("keyword");
+
+		
+		ProductSearchModel searchModel = new ProductSearchModel();
+		
+		searchModel.setKeyword(keyword);
+		
+		searchModel.setPage(getCurrentPage(request));
+		
+		PagerData<Product> products = productService.search(searchModel);
+		
+		model.addAttribute("products", products);
+		model.addAttribute("searchModel", searchModel);
+		
+		// đường dẫn tới file view
+		return "customer/productsSearch"; // -> /WEB-INF/views/customer/index.jsp
+       }
+	
 
 	@RequestMapping(value = { "/home/listproduct/{cateID}" }, method = RequestMethod.GET)
 	public String contact(final Model model, 
@@ -42,10 +68,7 @@ public class ProductListController extends BaseController {
 						   				    final HttpServletResponse response,
 						   				 @PathVariable("cateID") int cateID)  throws IOException {
 		
-		
-		
-	
-		
+
 		List<Product> product1 = productService.getEntitiesByNativeSQL("SELECT * FROM vqtshopdb.tbl_products where category_id =" + cateID +" ;");
 		
 		model.addAttribute("product1", product1);
