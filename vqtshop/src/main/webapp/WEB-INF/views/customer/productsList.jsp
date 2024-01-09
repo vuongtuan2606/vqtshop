@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-
+<!-- SPRING FORM -->
+<%@ taglib prefix="sf" uri="http://www.springframework.org/tags/form"%>
 <!-- import JSTL -->
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
@@ -32,11 +33,13 @@
         </div>
 
     </section>
-
     <section class="cate-products">
+    <sf:form action="${base }/home/listproduct/{cateID}" method="get">
+    	<input id="page" name="page" class="form-control" value="${searchModel.page }" style="display: none;">
         <div class="container">
             <div class="row ">
                 <div class="col-xl-3 col-xxl-3 col-lg-3 col-md-3 filter__products ">
+                	
                     <div class="accordion accordion__products " onclick="accordion__products__click()" id="accordionPanelsStayOpenExample">
                         <div class="accordion-item">
                           <h2 class="accordion-header accordion__products__header  " id="panelsStayOpen-headingOne">
@@ -167,22 +170,22 @@
                 </div>
                 <div class="col-xl-9 col-xxl-9  col-md-9 col-lg-9">
                     <div class="row categorie__products ">
-                     <c:forEach var="p"  begin = "0" end = "8" items="${product1.data}">
+                     <c:forEach items="${products.data}" begin = "0" end = "6" var="p" >                  
                         <div class="col-xl-3 col-xxl-3 col-lg-3 col-md-4 pb-3">
                              <div class="product__card" >    
                                 <div class="product__image">
-                                     <img src="${base }/upload/${p.avatar}" />                                
+                                	<a href="${base }/home/product-detail/${p.id }"><img src="${base }/upload/${p.avatar}" />    </a>                             
                                 </div>
                                 <div class="product__info">
-	                                   <span class="product__brand" >${p.brand.brand_name}</span>
-	                                   <a href="${base }/home/product-detail/${p.id }">${p.title }</a>
-	                                   <fmt:setLocale value="vi_VN"/>
-	                                   <div class="product__price" >
-	                                   		 <span  style="text-decoration: line-through !important;">
-	                                   		 	<fmt:formatNumber value="${p.price}" type="currency"/></span>
-   											 <span>
-   											 <fmt:formatNumber value="${p.priceSale}" type="currency"/></span>
-	                                   </div>	                                    
+                                   <span class="product__brand" >${p.brand.brand_name}</span>
+	                                    <a href="${base }/home/product-detail/${p.id }">${p.title }</a>
+	                                    <fmt:setLocale value="vi_VN"/>
+                                   <div class="product__price" >
+	                               		 <span  style="text-decoration: line-through !important;">
+	                               		 <fmt:formatNumber value="${p.price}" type="currency"/></span>
+										 <span>
+										 <fmt:formatNumber value="${p.priceSale}" type="currency"/></span>
+                                   </div>	                                    
 	                           </div>
                             </div>
                         </div>
@@ -199,10 +202,46 @@
                 </div>
             </div>
         </div>
+        </sf:form>
     </section>
+    
      <jsp:include page="/WEB-INF/views/customer/layout/footer.jsp"></jsp:include>
      <jsp:include page="/WEB-INF/views/customer/layout/js.jsp"></jsp:include>
     <script>
+    
+	    $( document ).ready(function() {
+			
+			
+			$("#paging").pagination({
+				currentPage: ${products.currentPage}, //trang hiện tại
+		        items: ${products.totalItems},	//tổng số sản phẩm
+		        itemsOnPage: ${products.sizeOfPage}, //số sản phẩm trên 1 trang
+		        cssStyle: 'light-theme',
+		        onPageClick: function(pageNumber, event) {
+		        	$('#page').val(pageNumber);
+		        	//$('#btnSearch').trigger('click');
+		        	 updateUrl(pageNumber);
+				},
+		    });
+		});
+	    
+	    function updateUrl(pageNumber) {
+	        // Lấy URL hiện tại
+	        var currentUrl = window.location.href;
+	        
+	        // Kiểm tra xem URL đã chứa tham số 'page' chưa
+	        var regex = /([?&])page=\d+/;
+	        var hasPageParam = regex.test(currentUrl);
+
+	        // Nếu URL không có tham số 'page', thêm vào
+	        if (!hasPageParam) {
+	            window.location.href = currentUrl + (currentUrl.indexOf('?') !== -1 ? '&' : '?') + 'page=' + pageNumber;
+	        } else {
+	            // Nếu URL đã có tham số 'page', cập nhật giá trị của nó
+	            window.location.href = currentUrl.replace(/([?&])page=\d+/, '$1page=' + pageNumber);
+	        }
+	    }
+    
         // Lấy danh sách các nút màu
         var colorButtons = document.querySelectorAll(".color-button");
 
@@ -214,19 +253,7 @@
         });
         });
         
-        $( document ).ready(function() {
-			
-			$("#paging").pagination({
-				currentPage: ${product1.currentPage}, //trang hiện tại
-		        items: ${product1.totalItems},	//tổng số sản phẩm
-		        itemsOnPage: ${product1.sizeOfPage}, //số sản phẩm trên 1 trang
-		        cssStyle: 'light-theme',
-		        onPageClick: function(pageNumber, event) {
-		        	$('#page').val(pageNumber);
-		        	$('#btnSearch').trigger('click');
-				},
-		    });
-		});
+       
     </script>
 
   

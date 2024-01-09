@@ -18,7 +18,7 @@
 </head>
 <body>
     <jsp:include page="/WEB-INF/views/customer/layout/header.jsp"></jsp:include>
-    <section class="bread-crumb">
+    <section class="bread-crumb" style="background-image: url(${base}/img/bread-crumb/bread-crumb.webp)">
         <div class="container">
             <div class="bread-crumb__title">
                 ${productDetail.title }
@@ -40,41 +40,25 @@
                     <div class="detail-product__image">
                         <div class="gallery-top">
                             <swiper-container  class="mySwiper" thumbs-swiper=".mySwiper2" space-between="1">
-                                <swiper-slide>
-                                    <a href="#">
-                                         <img id="avatar" src="${base }/upload/${productDetail.avatar}" >
-                                    </a>
-                                </swiper-slide>
+                            	<c:forEach items="${productDetail.productImages}" var="Images">
+	                                <swiper-slide>
+	                                    <a href="#">
+	                                         <img id="avatar" src="${base }/upload/${Images.path}" >
+	                                    </a>
+	                                </swiper-slide>
+                                 </c:forEach> 
                                 
                             </swiper-container>
                         </div>
                         <div class="gallery-thumbs">
                             <swiper-container style="--swiper-navigation-color: #c1c1c1; --swiper-pagination-color: #fff" class="mySwiper2" space-between="10" slides-per-view="4" free-mode="true" watch-slides-progress="true"  navigation="true">
-                                <swiper-slide>
-                                    <img src="../testimg/nho1.webp" />
-                                </swiper-slide>
-                                <swiper-slide>
-                                    <img src="../testimg/nho2.webp" />
-                                </swiper-slide>
-                                <swiper-slide>
-                                    <img src="../testimg/nho3.webp" />
-                                </swiper-slide>
-                                <swiper-slide>
-                                    <img src="../testimg/nho4.webp" />
-                                </swiper-slide>
-                                <swiper-slide>
-                                    <img src="../testimg/nho1.webp" />
-                                </swiper-slide>
-                                <swiper-slide>
-                                    <img src="../testimg/nho2.webp" />
-                                </swiper-slide>
-                                <swiper-slide>
-                                    <img src="../testimg/nho3.webp" />
-                                </swiper-slide>
-                                <swiper-slide>
-                                    <img src="../testimg/nho4.webp" />
-                                </swiper-slide>
+                            	<c:forEach items="${productDetail.productImages}" var="Images">
+	                                <swiper-slide>
+	                                     <img id="avatar" src="${base }/upload/${Images.path}"  style="width: 100px; height: 100px;" >
+	                                </swiper-slide>   
+                                </c:forEach>                             
                             </swiper-container>
+                            
                         </div>
                     </div>
                 </div>
@@ -108,13 +92,13 @@
                                         <div class="quality-btn-numbers">
                                            <button type="submit" onclick="Tru('${productDetail.id}')" value="-">-</button>
 											       <strong><input  name="a" type="number" id="${productDetail.id}" value="1" ></input></strong>
-											<button type="submit"  onclick="Cong('${productDetail.id}')" value="+">+</button>
+											<button type="submit" class="increase btn-plus" onclick="Cong('${productDetail.id}')" value="+">+</button>
                                         </div>
                                     </div>
                                     <div class="btn-buy">
                                         <button type="submit" class="add-cart">
 	                                        <a href="#" onclick="AddToCartInDetail('${base}', ${productDetail.id }, 1)">
-	                                       		 Thêm vào giỏ <i class="bi bi-cart-plus"></i>
+	                                       		 Thêm vào giỏ 
 	                                  		 </a> 
                                         </button>
                                          <button type="button" class="btn-buy-now">
@@ -156,10 +140,7 @@
                             <h2>Tab 3</h2>
                             <p>Nội dung của tab 3.</p>
                         </div>
-
                     </div>
-
-
                 </div>
             </div>
             <div class="row">
@@ -174,91 +155,33 @@
                             </p>
                         </div>
                         <div class="row product_related ">
+                         <c:forEach var="Similar"  begin = "0" end = "3" items="${Similar}">
                             <div class="col-xl-3 pb-3">
                                 <div class="product__card" >    
-                                    <div class="product__image">
-                                        <img src="../img/new-product-1.webp" class="main-image" >
-                                        <img src="../img/new-product-1-hover.webp" alt="" class="hover-image">
-                                        <div class="overlay__add-to-cart">
-                                            <button class="add-to-cart">
-                                                <i class="bi bi-cart-plus"></i>
-                                            </button>
-                                        </div>
+                                    <div class="product__image">                                   
+                                       <a  href="${base }/home/product-detail/${Similar.id }">
+                                        	<img class="main-image"  src="${base }/upload/${Similar.avatar}" > 
+                                       </a>                                  
                                     </div>
                                     <div class="product__info">
-                                        <span class="product__brand">MLB VIỆT NAM</span>
-                                        <a href="">Giày MLB Chunky Liner Mid Denim Boston Red</a>
-                                        <span class="product__price">
-                                            4.790.000đ
-                                        </span>
+                                        <span class="product__brand">${brand.brand_name }</span>
+                                        <a href="${base }/home/product-detail/${Similar.id }"> ${Similar.title }</a>
+                                       <fmt:setLocale value="vi_VN"/>
+	                                   <div class="product__price" >
+	                                   		 <span  style="text-decoration: line-through !important;">
+	                                   		 	<fmt:formatNumber value="${Similar.price}" type="currency"/></span>
+   											 <span>
+   											 <fmt:formatNumber value="${Similar.priceSale}" type="currency"/></span>
+	                                   </div>
                                     </div>
-                                </div>
-                            </div><div class="col-xl-3 pb-3">
-                                <div class="product__card" >    
-                                    <div class="product__image">
-                                        <img src="../img/new-product-1.webp" class="main-image" >
-                                        <img src="../img/new-product-1-hover.webp" alt="" class="hover-image">
-                                        <div class="overlay__add-to-cart">
-                                            <button class="add-to-cart">
-                                                <i class="bi bi-cart-plus"></i>
-                                            </button>
-                                        </div>
-                                    </div>
-                                    <div class="product__info">
-                                        <span class="product__brand">MLB VIỆT NAM</span>
-                                        <a href="">Giày MLB Chunky Liner Mid Denim Boston Red</a>
-                                        <span class="product__price">
-                                            4.790.000đ
-                                        </span>
-                                    </div>
-                                </div>
-                            </div><div class="col-xl-3 pb-3">
-                                <div class="product__card" >    
-                                    <div class="product__image">
-                                        <img src="../img/new-product-1.webp" class="main-image" >
-                                        <img src="../img/new-product-1-hover.webp" alt="" class="hover-image">
-                                        <div class="overlay__add-to-cart">
-                                            <button class="add-to-cart">
-                                                <i class="bi bi-cart-plus"></i>
-                                            </button>
-                                        </div>
-                                    </div>
-                                    <div class="product__info">
-                                        <span class="product__brand">MLB VIỆT NAM</span>
-                                        <a href="">Giày MLB Chunky Liner Mid Denim Boston Red</a>
-                                        <span class="product__price">
-                                            4.790.000đ
-                                        </span>
-                                    </div>
-                                </div>
-                            </div><div class="col-xl-3 pb-3">
-                                <div class="product__card" >    
-                                    <div class="product__image">
-                                        <img src="../img/new-product-1.webp" class="main-image" >
-                                        <img src="../img/new-product-1-hover.webp" alt="" class="hover-image">
-                                        <div class="overlay__add-to-cart">
-                                            <button class="add-to-cart">
-                                                <i class="bi bi-cart-plus"></i>
-                                            </button>
-                                        </div>
-                                    </div>
-                                    <div class="product__info">
-                                        <span class="product__brand">MLB VIỆT NAM</span>
-                                        <a href="">Giày MLB Chunky Liner Mid Denim Boston Red</a>
-                                        <span class="product__price">
-                                            4.790.000đ
-                                        </span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                    </div>
-
-                </div>
-
-            </div>
-        </div>
+                               	</div>
+                           	</div>
+                           	 </c:forEach>
+                           </div>
+                       </div>
+                   </div>
+               </div>
+           </div>
     </section>
     <jsp:include page="/WEB-INF/views/customer/layout/footer.jsp"></jsp:include>
     <jsp:include page="/WEB-INF/views/customer/layout/js.jsp"></jsp:include>

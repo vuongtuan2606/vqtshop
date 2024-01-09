@@ -35,10 +35,8 @@ public class ProductDetailsController extends BaseController {
 	public String productDetails(final Model model, 
 	   				   final HttpServletRequest request, 
 	   				   final HttpServletResponse response) {
-				
-		// đường dẫn tới file view
-		return "customer/product-detail"; // -> /WEB-INF/views/customer/index.jsp
-
+		
+		return "customer/product-detail"; 
 }
 	
 	@RequestMapping(value= {"/home/product-detail/{id}"},method = RequestMethod.GET)
@@ -56,6 +54,9 @@ public class ProductDetailsController extends BaseController {
 		Brand brand= brandService.getById(products.getBrand().getId());
 		model.addAttribute("brand",brand);
 		
+		List<Product> SimilarProducts = productService.getEntitiesByNativeSQL("SELECT p.* FROM tbl_products p JOIN tbl_category c ON p.category_id = c.id   WHERE c.id = "+ products.getCategories().getId() + " AND p.id <> "+ productId +" ");	
+		model.addAttribute("Similar", SimilarProducts);
+
 		return "customer/product-detail";
 	}
 }	

@@ -52,7 +52,7 @@
         
                                 </div>
                             </li>
-                            <li><a href="">Túi balo</a></li>
+                            <li><a href="${base }/home/listproduct/3">Túi balo</a></li>
                             <li><a href="">Mũ nón</a></li>
                             <li><a href="">Áo quần</a></li>
                             <li><a href="">Phụ kiện</a></li>
@@ -66,8 +66,6 @@
                             <form action="${base }/home/productSearch" method="get">
                                 <a href=""><i class="bi bi-search"></i></a>
                                 <div class="input-container">
-                                	
-                                	
                                     <input type="text"  id="keyword" name="keyword" value="${searchModel.keyword }"  class="input"  placeholder="search...">
                                     <button type="submit" id="btnSearch">
 	                                    <span class="icon"> 

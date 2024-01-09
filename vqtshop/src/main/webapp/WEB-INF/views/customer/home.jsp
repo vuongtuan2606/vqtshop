@@ -130,7 +130,7 @@
 	                        <div class="col-xl-3 col-xlx-3 col-md-4 col-12 pb-3">                     	    
 	                           <div class="product__card" >    
 	                               <div class="product__image">
-	                                   <img src="${base }/upload/${products.avatar}" />
+	                                   <a href="${base }/home/product-detail/${products.id }"> <img   src="${base }/upload/${products.avatar}" /></a>
 	                                   <!-- <img src="../img/new-product-1-hover.webp" alt="" class="hover-image"> -->
 	                                   <div class="overlay__add-to-cart">
 	                                       <button class="add-to-cart">

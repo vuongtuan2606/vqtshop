@@ -29,7 +29,7 @@ import com.devpro.vqtshop.services.PagerData;
 import com.devpro.vqtshop.services.ProductService;
 
 @Controller
-public class ProductListController extends BaseController {
+public class ProductSearchController extends BaseController {
 	
 	@Autowired 
 	private ProductService productService; 
@@ -38,37 +38,25 @@ public class ProductListController extends BaseController {
 	private CategoriesService categoriesService;
 	
 	
-	
-	
-
-	@RequestMapping(value = { "/home/listproduct/{cateID}" }, method = RequestMethod.GET)
-	public String listproduct(final Model model, 
-										    final HttpServletRequest request, 
-						   				    final HttpServletResponse response,
-						   			     	 @PathVariable("cateID") int cateID)  throws IOException {
+	@RequestMapping(value = { "/home/productSearch" }, method = RequestMethod.GET)
+	public String ProductSearch(final Model model, 
+	   				   final HttpServletRequest request, 
+	   				   final HttpServletResponse response) {
 		
 		String keyword = request.getParameter("keyword");
 
+		
 		ProductSearchModel searchModel = new ProductSearchModel();
-		
 		searchModel.setKeyword(keyword);
-		
 		searchModel.setPage(getCurrentPage(request));
-
-		/*
-		 * List<Product> product1 = productService.
-		 * getEntitiesByNativeSQL("SELECT * FROM vqtshopdb.tbl_products where category_id ="
-		 * + cateID +" ;");
-		 */
-		PagerData<Product>  product2 = productService.search2(searchModel,cateID);
+		
+		PagerData<Product> products = productService.search(searchModel);
 	
-		model.addAttribute("products", product2);
+		model.addAttribute("products", products);
 		model.addAttribute("searchModel", searchModel);
 		
-		
-		return "customer/productsList"; 
-	}
+		return "customer/productsSearch"; 
+       }
 	
-
 	
 }

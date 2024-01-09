@@ -217,23 +217,33 @@ public class ProductService extends BaseService<Product> {
 							    " or p.detail_description like '%" + searchModel.getKeyword() + "%'" + 
 							     " or p.short_description like '%" + searchModel.getKeyword() + "%')";
 				}
-		
-		// tìm theo seo
-//		if (!StringUtils.isEmpty(searchModel.seo)) {
-//			sql += " and p.seo = '" + searchModel.seo + "'";
-//		}
 
-			// tìm kiếm sản phẩm hot
-////			if (searchModel.isHot != null) {
-////				sql += " and p.is_hot = '" + searchModel.seo + "'";
-////			}
-//			
-		
 		}
-//
-//		// chi lay san pham chua xoa
-////				sql += " and p.status=1 ";
-//		
-			return getEntitiesByNativeSQL(sql,searchModel.getPage());
+		return getEntitiesByNativeSQL(sql,searchModel.getPage());
+	}
+	public PagerData<Product> search2(ProductSearchModel searchModel,int categoryId) {
+
+		// khởi tạo câu lệnh
+		// tránh if else nhiều thì luôn luôn có 1 câu lệnh giả và tiêu chí
+        //  người dùng seach theo tiêu chí nào thì cần thêm câu lệnh and
+		String sql = "SELECT * FROM tbl_products p WHERE 1=1";
+
+		if (searchModel != null) {
+				
+				 // tìm kiếm theo category
+		        if (categoryId != 0) {
+		            sql += " and category_id = " + categoryId ;
+		        }
+		     // tìm kiếm theo title và description
+				if (!StringUtils.isEmpty(searchModel.getKeyword()))
+				{
+					sql += " and (p.title like '%" + searchModel.getKeyword() + "%'" +
+							    " or p.detail_description like '%" + searchModel.getKeyword() + "%'" + 
+							     " or p.short_description like '%" + searchModel.getKeyword() + "%')";
+				}
+				
+
+		}
+		return getEntitiesByNativeSQL(sql,searchModel.getPage());
 	}
 }
